@@ -1,0 +1,133 @@
+.helper-text {
+  color: #828282;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 28px;
+}
+
+.main-div{
+  height: 85vh;
+  overflow: hidden !important;
+}
+
+.main-heading-text {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 28px;
+}
+
+.chart-heading-text {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.main-table-div {
+  border-radius: 10px;
+  border: 1px solid #E1E1E1;
+  overflow: auto;
+}
+
+.accordion-main {
+  display: block;
+  max-height: 56vh;
+  width: max-content;
+  overflow: auto;
+}
+
+.accordion-main::-webkit-scrollbar {
+  display: none;
+}
+
+.accordion-trigger {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #292929;
+  margin: 0 !important;
+}
+
+.module-name-div {
+  height: 40px;
+  background-color: #E7E7E7;
+  width: 13.5rem !important;
+  min-width: 13.5rem !important;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #292929;
+}
+
+.table-head-column {
+  width: max-content;
+  height: 40px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #000000;
+}
+
+.table-data-column {
+  height: 40px;
+  border-top: 1px solid #828282;
+}
+
+.sub-summary-row {
+  display: flex !important;
+  flex-direction: row !important;
+}
+
+.is-last-child{
+  width: 7.5rem !important;
+  min-width: 7.5rem !important;
+}
+
+.is-first {
+  width: 14rem !important;
+  min-width: 14rem !important;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #000000;
+}
+
+.header-bg {
+  background-color: #E7E7E7;
+}
+
+.header-bg:hover {
+  background-color: #E7E7E7 !important;
+}
+
+.mat-expansion-panel-header {
+  .mat-content {
+    background-color: #E7E7E7;
+  }
+}
+
+.table-data {
+  min-width: 6rem;
+  width: 6rem;
+}
+
+.table-data-border {
+  border-right: 1px solid #828282;
+  min-width: 6rem;
+  width: 6rem;
+}
+
+.roles-name {
+  border-right: 1px solid #828282;
+  border-top: 1px solid #828282;
+  height: 40px;
+  width: 11rem !important;
+  min-width: 11rem !important;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #000000;
+}
+
+.roles-name-last-child {
+  border-bottom: 1px solid #828282;
+}

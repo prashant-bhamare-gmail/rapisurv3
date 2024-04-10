@@ -1,0 +1,57 @@
+<div class="modal-body">
+  <div class="d-flex p-2 justify-content-center">
+    <nb-icon
+      icon="alert-circle-outline"
+      style="font-size: 2rem"
+      status="primary"></nb-icon>
+  </div>
+
+  <div class="d-flex p-2 justify-content-center" style="white-space: pre-line">
+    {{ bodyContent }}
+  </div>
+
+  <div class="d-flex p-2 justify-content-center" *ngIf="twoBtns">
+    <div class="d-inline p-2">
+      <button
+        class="btn btn-success btn-sm"
+        outline
+        status="primary"
+        [nbSpinner]="btnloading"
+        nbSpinnerStatus="control"
+        nbButton
+        size="small"
+        (click)="closeModal('No')">
+        {{ no }}
+      </button>
+    </div>
+    <div class="d-inline p-2">
+      <button
+        class="btn btn-success btn-sm"
+        outline
+        status="primary"
+        [nbSpinner]="btnloading"
+        nbSpinnerStatus="control"
+        nbButton
+        size="small"
+        (click)="closeModal('Yes')">
+        {{ yes }}
+      </button>
+    </div>
+  </div>
+
+  <div class="d-flex p-2 justify-content-center" outline *ngIf="!twoBtns">
+    <div class="d-inline p-2">
+      <button
+        class="btn btn-success btn-sm"
+        outline
+        status="primary"
+        [nbSpinner]="btnloading"
+        nbSpinnerStatus="control"
+        nbButton
+        size="small"
+        (click)="closeModal('No')">
+        Close
+      </button>
+    </div>
+  </div>
+</div>

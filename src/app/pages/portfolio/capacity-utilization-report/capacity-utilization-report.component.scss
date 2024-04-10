@@ -1,0 +1,39 @@
+.helper-text {
+  color: #828282;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 28px;
+}
+
+.main-heading-text {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 28px;
+}
+
+.chart-heading-text {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.table-outer-div {
+  height: 65vh;
+  border: 1px solid #E1E1E1 !important;
+  border-radius: 10px !important;
+  overflow: auto !important;
+}
+
+.mat-cell, .mat-header-cell{
+  max-width: 160px;
+  word-wrap:break-word;
+  text-align: center;
+}
+
+.mat-column-work_skill{
+  text-align: start !important;
+}
+
+table {
+  width: 100% !important;
+}
+

@@ -1,0 +1,97 @@
+<div class="modal-body">
+
+  <div class="row">
+    <div class="col-md-7">
+      <div style="display: flex; justify-content: flex-end;">
+        <p style="text-decoration: none;font-size: 16px;">New project</p>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <button class="close" style="margin-right: 20px;" aria-label="Close" (click)="closeModal('close')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+
+
+
+  <section>
+    <div class="popup">
+      <div class="popup_container">
+
+        <form [formGroup]="takeoffForm">
+
+
+
+          <div class="form-group">
+            <label for="inputEmail4" style="font-size: 12px;margin-bottom: -5px;" class="form-label">Project
+              name</label>
+            <input type="text" class="form-control form-control-sm" name="issue" id="email" formControlName="desr"
+              placeholder="Project name" required />
+          </div>
+
+          <div class="form-group">
+            <label for="inputEmail4" style="font-size: 12px;margin-bottom: -5px;" class="form-label">Location</label>
+            <input type="text" class="form-control form-control-sm" name="issue" id="email" formControlName="location"
+              placeholder="Location" required />
+          </div>
+
+          <div class="form-group">
+            <label for="inputEmail4" style="font-size: 12px;margin-bottom: -5px;" class="form-label">Currency</label>
+            <ng-select [items]="currencies" class="ng-select-container issue-select" appendTo="body" bindLabel="name"
+              dropdownPosition="auto" bindValue="name" labelForId="id" placeholder="Select Currency"
+              formControlName="other_currency">
+            </ng-select>
+          </div>
+
+          <div class="form-group">
+            <label for="inputEmail4" style="font-size: 12px;margin-bottom: -5px;" class="form-label">Select sub-folders
+              to be created (DMS)</label>
+
+            <div class="cards-container">
+              <div *ngFor="let c of folders; let i=index" (click)="selectFolder(c)">
+                <div class="cards"  [class.active]="c.active">
+                  <p style="font-size: 12px;" *ngIf="c.name.length <= 30" [matTooltip]="c.name">
+                    {{ c.name }}
+                  </p>
+                  <p style="font-size: 12px;" *ngIf="c.name.length > 30" [matTooltip]="c.name">
+                    {{c.name | shortenText:50}}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="form-group">
+            <label for="inputEmail4" style="font-size: 12px;margin-bottom: -5px;" class="form-label">Storage
+              Location</label>
+            <ng-select [items]="locationData" class="ng-select-container issue-select" appendTo="body" bindLabel="name"
+              dropdownPosition="auto" bindValue="id" labelForId="id" placeholder="Select Storage Location"
+              formControlName="storage_location">
+            </ng-select>
+          </div>
+
+
+          <!-- <div class="form-group">
+              <label for="inputEmail4" style="font-size: 12px;margin-bottom: -5px;"
+                class="form-label">Storage Location</label>
+              <textarea rows="5" formControlName="storage_location" class="form-control form-control-sm"
+                placeholder="Storage Location" name="message" required></textarea>
+            </div>    -->
+
+          <button class="btn btn-success btn-block btn-sm" outline status="primary"
+            [disabled]="!takeoffForm.valid" nbButton size="small" (click)="createBtn()">
+            <ng-container>
+              Create
+            </ng-container>
+          </button>
+
+        </form>
+
+      </div>
+    </div>
+  </section>
+
+
+</div>

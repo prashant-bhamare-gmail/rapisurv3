@@ -1,0 +1,209 @@
+<!-- Hero Section -->
+<section>
+  <div>
+    <div class="row">
+      <div class="col-md-8">
+        <p class="section_header">Pre-construction</p>
+
+        <div class="app_cards">
+          <div
+            class="cards"
+            (click)="gotoTakeoff()"
+            *ngIf="
+              takeoff?.pageView ||
+              takeoffmain?.pageView ||
+              takeoffroot?.pageView ||
+              takeoffrogue?.pageView
+            ">
+            <img
+              src="assets/images/Takeoff.png"
+              style="width: 50px; height: 50px"
+              alt="" />
+            <div class="app_name small-p">
+              <p>Takeoff</p>
+              <ion-icon name="arrow-forward-outline"></ion-icon>
+            </div>
+          </div>
+          <div
+            class="cards"
+            (click)="gotoBill()"
+            *ngIf="
+              billing?.pageView ||
+              billingmain?.pageView ||
+              billingrogue?.pageView ||
+              billingpreliminaries?.pageView ||
+              billingroot?.pageView
+            ">
+            <img
+              src="assets/images/Billing.png"
+              class="bill-img"
+              style="width: 50px; height: 50px"
+              alt="" />
+            <div class="app_name small-p">
+              <p>Bill of quantities</p>
+              <ion-icon name="arrow-forward-outline"></ion-icon>
+            </div>
+          </div>
+          <div
+            class="cards"
+            (click)="gotoCosting()"
+            *ngIf="
+              estimate?.pageView ||
+              estimatemain?.pageView ||
+              estimateroot?.pageView
+            ">
+            <img
+              src="assets/images/Estimating.png"
+              style="width: 50px; height: 50px"
+              alt="" />
+            <div class="app_name small-p">
+              <p>Estimating</p>
+              <ion-icon name="arrow-forward-outline"></ion-icon>
+            </div>
+          </div>
+
+          <br />
+
+          <div
+            class="cards"
+            (click)="gotoTender()"
+            *ngIf="tender?.pageView || tenderview?.pageView">
+            <img
+              src="assets/images/Tender.png"
+              style="width: 50px; height: 50px"
+              alt="" />
+            <div class="app_name small-p">
+              <p>Tender</p>
+              <ion-icon name="arrow-forward-outline"></ion-icon>
+            </div>
+          </div>
+          <div
+            class="cards"
+            (click)="gotoBidAndContract()"
+            *ngIf="bid?.pageView || bidmain?.pageView">
+            <img
+              src="assets/images/Bid&Contract.png"
+              style="width: 50px; height: 50px"
+              alt="" />
+            <div class="app_name" style="padding-bottom: 55px">
+              <p>Bid & Contract</p>
+              <ion-icon name="arrow-forward-outline"></ion-icon>
+            </div>
+          </div>
+          <div
+            class="cards"
+            (click)="gotoRateSheet()"
+            *ngIf="invoicing?.pageView">
+            <img
+              src="assets/images/RateSheet.png"
+              style="width: 50px; height: 50px"
+              alt="" />
+            <div class="app_name small-p">
+              <p>Rate Sheet</p>
+              <ion-icon name="arrow-forward-outline"></ion-icon>
+            </div>
+          </div>
+        </div>
+        <p class="section_header" style="margin-top: 20px">Construction</p>
+        <div class="app_cards">
+          <div
+            class="cards"
+            (click)="gotoValuation()"
+            *ngIf="
+              valuation?.pageView ||
+              valuation_viewreports?.pageView ||
+              valuation_confrimworks?.pageView
+            ">
+            <img
+              src="assets/images/Valuation.png"
+              style="width: 50px; height: 50px"
+              alt="" />
+            <div class="app_name">
+              <p>Valuation</p>
+              <ion-icon name="arrow-forward-outline"></ion-icon>
+            </div>
+          </div>
+
+          <div
+            class="cards"
+            (click)="financialPlan()"
+            *ngIf="
+              financial_planning?.pageView || financial_planningroot?.pageView
+            ">
+            <img
+              src="assets/images/fin_plan.png"
+              style="width: 50px; height: 50px"
+              alt="" />
+            <div class="app_name small-p">
+              <p>Financial Planning</p>
+              <ion-icon name="arrow-forward-outline"></ion-icon>
+            </div>
+
+            <!-- <div class="app_name small-p">
+              <p style="font-size: 10px;color: #fc5c03;">(Comming soon)</p>
+            </div> -->
+          </div>
+          <br />
+          <div
+            class="cards"
+            (click)="workplan()"
+            *ngIf="work_planning?.pageView">
+            <img
+              src="assets/images/Scheduling-icon.png"
+              style="width: 50px; height: 50px"
+              alt="" />
+            <div class="app_name small-p">
+              <p>Work planning</p>
+              <ion-icon name="arrow-forward-outline"></ion-icon>
+            </div>
+            <!-- <div class="app_name small-p">
+              <p style="font-size: 10px;color: #fc5c03;">(Comming soon)</p>
+            </div> -->
+          </div>
+          <div class="cards" (click)="purchase()" *ngIf="purchasing?.pageView">
+            <img
+              src="assets/images/Purchasing-icon.png"
+              style="width: 50px; height: 50px"
+              alt="" />
+            <div class="app_name small-p">
+              <p>Purchasing</p>
+              <ion-icon name="arrow-forward-outline"></ion-icon>
+            </div>
+            <!-- <div class="app_name small-p">
+              <p style="font-size: 10px;color: #fc5c03;">(Comming soon)</p>
+            </div> -->
+          </div>
+
+          <div class="cards" (click)="invoice()" *ngIf="invoicing?.pageView">
+            <img
+              src="assets/images/Invoicing-icon.png"
+              style="width: 50px; height: 50px"
+              alt="" />
+            <div class="app_name small-p">
+              <p>Invoicing</p>
+              <ion-icon name="arrow-forward-outline"></ion-icon>
+            </div>
+            <!-- <div class="app_name small-p">
+              <p style="font-size: 10px;color: #fc5c03;">(Comming soon)</p>
+            </div> -->
+          </div>
+
+          <div
+            class="cards"
+            (click)="gotoMaterial()"
+            *ngIf="material?.pageView">
+            <img
+              src="assets/images/Material.png"
+              style="width: 50px; height: 50px"
+              alt="" />
+            <div class="app_name small-p">
+              <p>Material & Inventory</p>
+              <ion-icon name="arrow-forward-outline"></ion-icon>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4"></div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,46 @@
+
+<ngx-spinner></ngx-spinner>
+<nb-layout>
+  <nb-layout-column>
+     
+<div class="signup">
+  <div class="signup_container">
+    <div class="signup_row1">
+      <div class="signup_header">
+        <img src="assets/images/favicon2.png" alt="" />
+        <p class="signup_header_p">Rapisurv Workspace</p>
+      </div>
+      <h1>Welcome back!</h1>
+
+      <div class="signup_input_container">
+        <form [formGroup]="loginForm" autocomplete="off">
+        <input type="text" placeholder="Username"  formControlName="unmn" />
+        </form>
+      </div> 
+      <button class="signup_button" [disabled]="!loginForm.valid" (click)="proceedLogin()">Proceed</button>
+      <p class="signup_create_account_p">
+        Don't have an account?
+        <strong>Sign Up</strong>
+      </p>
+
+      <div class="multi_step_signup">
+        <span class="multi_step_signup1"></span>
+        <span></span>
+      </div>
+    </div>
+    <div class="signup_row2">
+      <div class="signup_testimonial">
+        <h4>
+          Welcome to your winning platform!<br>
+          We can help you succeed with the right tools.
+        </h4>
+      </div>
+      <div>
+        <img class="signup_screen1_img" src="assets/login_username.png" />
+      </div>
+     
+    </div>
+  </div>
+</div>
+</nb-layout-column>
+</nb-layout>

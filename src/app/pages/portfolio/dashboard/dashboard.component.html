@@ -1,0 +1,289 @@
+<div class=" mb-3">
+    <mat-form-field appearance="outline" class="my-2 ml-3 file-input-container">
+      <span matPrefix [class]="isStandardMode?'portfolio-view':'standard-view'"></span>
+      <mat-select placeholder="Switch to Standard View" (selectionChange)="onChangeView($event.value)">
+          <mat-option value="standardView">Switch to Standard View</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+<div [ngStyle]="!isTableViewMode ? {'display':'block'}:{'display':'none'}">
+    <div class="pt-4 px-4 row-space-between center">
+        <div [matMenuTriggerFor]="portfolioMenu" class="row-center center main-heading-text">{{portfolioData?.desr}}
+            <mat-icon class="cursor-pointer">expand_more</mat-icon>
+        </div>
+        <span class="pr-5 chart-heading-text">{{portfolioData?.created_at | date:'MMM d,y'}}</span>
+    </div>
+
+    <div class="">
+        <div class="main-dashboard-container p-1">
+            <div class="chart-card p-3">
+                <div class="p-3 row-space-between center">
+                    <span class="chart-heading-text">Contract Status</span>
+                    <button class="btn btn-dark">Annual</button>
+                </div>
+                <mat-divider class="my-3"></mat-divider>
+                <div class="row-space-between center">
+                    <div class="row-start center" id="contractStatusChart"></div>
+                    <div class="column-end">
+                        <span class="row-start center contact-status-lagend-text my-1">
+                            <div class="contact-status-icon contract-sum-color mr-1"></div>Contract Sum</span>
+                        <span class="row-start center contact-status-lagend-text my-1">
+                            <div class="contact-status-icon revised-sum-color mr-1"></div>Revised Sum</span>
+                        <span class="row-start center contact-status-lagend-text my-1">
+                            <div class="contact-status-icon approved-variation-color mr-1"></div>Approved Variation</span>
+                        <span class="row-start center contact-status-lagend-text my-1">
+                            <div class="contact-status-icon unapproved-variation-color mr-1"></div>Unapproved Variation</span>
+                        <span class="row-start center contact-status-lagend-text my-1">
+                            <div class="contact-status-icon completed-sum-color mr-1"></div>Completed Sum</span>
+                        <span class="row-start center contact-status-lagend-text my-1">
+                            <div class="contact-status-icon total-variation-color mr-1"></div>Total Valuations</span>
+                    </div>
+                </div>
+            </div>
+            <div class="chart-card p-3">
+                <div class="p-3 row-space-between center">
+                    <span class="chart-heading-text">At Risk Margin</span>
+                    <button class="gray-rounded-button">NGN</button>
+                </div>
+                <div class="p-3 row-space-between center">
+                    <span class="column-center center">
+                        <span>Actual Margin</span>
+                        <span class="chart-heading-text">{{portfolioDataForCharts?.calculated_actual_margin |
+                            numberTransform }}</span>
+                    </span>
+                    <span class="column-center center">
+                        <span>Unapproved Variations</span>
+                        <span class="chart-heading-text">{{portfolioDataForCharts?.unapproved_change | numberTransform
+                            }}</span>
+                    </span>
+                    <span class="column-center center">
+                        <span>Internal Issues</span>
+                        <span class="chart-heading-text">{{portfolioDataForCharts?.internal_issues | numberTransform
+                            }}</span>
+                    </span>
+                </div>
+                <mat-divider class="my-3"></mat-divider>
+                <div class="row-start center" id="marginPieChart"></div>
+            </div>
+            <div class="chart-card p-3">
+                <div class="p-3 row-space-between center">
+                    <span class="chart-heading-text">Valuation Status</span>
+                </div>
+                <mat-divider class="my-3"></mat-divider>
+                <div class="valuation-status-div row-space-between center">
+                    <div class="valuation-status-chart center">
+                        <div class="completed-sum row-center center">
+                            {{portfolioDataForCharts?.total_valuations | numberTransform }}</div>
+                        <div class="total-valuations row-center center">
+                            {{portfolioDataForCharts?.pending_valuations | numberTransform }}
+                        </div>
+                        <div class="pending-valuations row-center center">
+                            {{portfolioDataForCharts?.completed_sum | numberTransform }}
+                        </div>
+                    </div>
+                    <div class="column-end m-auto">
+                        <span class="row-start center chart-subheading-text my-1">
+                            <div class="contact-status-icon revised-sum-color mr-1"></div>Total Valuations</span>
+                        <span class="row-start center chart-subheading-text my-1">
+                            <div class="contact-status-icon completed-sum-color mr-1"></div>Completed Sum</span>
+                        <span class="row-start center chart-subheading-text my-1">
+                            <div class="contact-status-icon pending-variation-color mr-1"></div>Pending Valuations</span>
+                    </div>
+                </div>
+            </div>
+            <div class="chart-card-2 p-3">
+                <div class="p-3 row-space-between center">
+                    <span class="chart-heading-text">Budget performance</span>
+                    <button class="gray-rounded-button">NGN</button>
+                </div>
+                <div class="p-3 row-space-between center">
+                    <span class="column-center center">
+                        <span>Original Budget</span>
+                        <span class="chart-heading-text">{{portfolioDataForCharts?.original_budget | numberTransform
+                            }}</span>
+                    </span>
+                    <span class="column-center center">
+                        <span>Current Budget</span>
+                        <span class="chart-heading-text">{{portfolioDataForCharts?.current_budget | numberTransform
+                            }}</span>
+                    </span>
+                    <span class="column-center center">
+                        <span>Budget Variance</span>
+                        <span class="chart-heading-text">{{portfolioDataForCharts?.budget_variance | numberTransform
+                            }}</span>
+                    </span>
+                    <span class="column-center center">
+                        <span>Budget % Variance</span>
+                        <span class="chart-heading-text">{{portfolioDataForCharts?.per_budget_variance | numberTransform
+                            }}</span>
+                    </span>
+                    <span class="column-center center">
+                        <span>Cost Overrun %</span>
+                        <span class="chart-heading-text">{{portfolioDataForCharts?.internal_issues | numberTransform
+                            }}</span>
+                    </span>
+                </div>
+                <mat-divider class="my-3"></mat-divider>
+                <div id="budgetPieChart"></div>
+            </div>
+            <div class="chart-card-2 p-3">
+                <div class="p-3 row-space-between center">
+                    <span class="chart-heading-text">Cost performance</span>
+                    <button class="gray-rounded-button">NGN</button>
+                </div>
+                <div class="p-3 row-space-between center">
+                    <span class="column-center center">
+                        <span>Planned Total</span>
+                        <span class="chart-heading-text">
+                            {{portfolioDataForCharts?.planned_cost | numberTransform }}
+                        </span>
+                    </span>
+                    <span class="column-center center">
+                        <span>Total Spend</span>
+                        <span class="chart-heading-text">
+                            {{portfolioDataForCharts?.total_spend | numberTransform }}
+                        </span>
+                    </span>
+                    <span class="column-center center">
+                        <span>YTD Plan</span>
+                        <span class="chart-heading-text">
+                            {{portfolioDataForCharts?.ytd_cost_plan | numberTransform }}
+                        </span>
+                    </span>
+                    <span class="column-center center">
+                        <span>YTD Spend</span>
+                        <span class="chart-heading-text">
+                            {{portfolioDataForCharts?.ytd_spend | numberTransform }}
+                        </span>
+                    </span>
+                    <span class="column-center center">
+                        <span>EAC</span>
+                        <span class="chart-heading-text">
+                            {{portfolioDataForCharts?.eac | numberTransform }}
+                        </span>
+                    </span>
+                    <span class="column-center center">
+                        <span>ETC</span>
+                        <span class="chart-heading-text">
+                            {{portfolioDataForCharts?.etc | numberTransform }}
+                        </span>
+                    </span>
+                    <span class="column-center center">
+                        <span>Earned Value</span>
+                        <span class="chart-heading-text">
+                            {{portfolioDataForCharts?.earned_value | numberTransform }}
+                        </span>
+                    </span>
+                </div>
+                <mat-divider class="my-3"></mat-divider>
+                <div id="costBarChart"></div>
+            </div>
+            <div class="chart-card-3 p-3">
+                <div class="p-3 row-space-between center">
+                    <span class="chart-heading-text">Contract performance</span>
+                    <button class="gray-rounded-button">NGN</button>
+                </div>
+                <div class="p-3 row-space-between center">
+                    <span class="column-center center">
+                        <span>Completed Works</span>
+                        <span class="chart-heading-text">
+                            {{portfolioDataForCharts?.completed_sum | numberTransform }}
+                        </span>
+                    </span>
+                    <span class="column-center center">
+                        <span>Spend</span>
+                        <span class="chart-heading-text">
+                            {{portfolioDataForCharts?.total_spend | numberTransform }}
+                        </span>
+                    </span>
+                    <span class="column-center center">
+                        <span>% Complete</span>
+                        <span class="chart-heading-text">
+                            {{portfolioDataForCharts?.per_complete | numberTransform }}
+                        </span>
+                    </span>
+                    <span class="column-center center">
+                        <span>Plan Margin</span>
+                        <span class="chart-heading-text">
+                            {{portfolioDataForCharts?.calculated_planned_margin | numberTransform }}
+                        </span>
+                    </span>
+                    <span class="column-center center">
+                        <span>Actual Margin</span>
+                        <span class="chart-heading-text">
+                            {{portfolioDataForCharts?.calculated_actual_margin | numberTransform }}
+                        </span>
+                    </span>
+                </div>
+                <mat-divider class="my-3"></mat-divider>
+                <div id="contractPerformanceChart"></div>
+            </div>
+        </div>
+        <button class="py-2 pl-5 btn btn-link" (click)="tableViewHandler()">Drilldown to Data</button>
+    </div>
+</div>
+
+<div *ngIf="isTableViewMode">
+    <div class="column p-3">
+        <span class="main-heading-text">Portfolio Dashboard</span>
+        <div class="row-space-between end">
+            <span>
+                <img class="mr-1" src="assets/icons/info-icon.svg" alt="info icon">
+                <span class="helper-text"> Drag to the side to see full table view</span>
+            </span>
+            <div class="row mr-3">
+                <button class="mr-2 btn btn-link row-center center" (click)="openTableDialog()">
+                    <img class="mr-2" src="assets/icons/Category.svg" alt="Category">
+                    Change table layout</button>
+                <button mat-stroked-button class="row-center center" (click)="openCSVDialog()">
+                    <span>Export CSV</span>
+                    <img class="ml-2" src="assets/icons/upload-icon.svg" alt="upload icon">
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="mx-3 table-outer-div">
+        <table [dataSource]="dataSource" mat-table>
+            <ng-container *ngFor="let column of columnListOne; trackBy: trackByProperty">
+                <ng-container [matColumnDef]="column.property">
+                    <th *matHeaderCellDef class="center table-data-text bg-gray" mat-header-cell>
+                        <b>{{ column.property == 'contract_sum' ? column.label + ' (Excl. Tax)':column.label }}</b>
+                    </th>
+                    <td *matCellDef="let row" mat-cell class="cursor-pointer table-data-text"
+                        [ngClass]="{'colored-text': column.property === 'project_id'}"
+                        (click)="onClickProject(row.project_id)">
+                        <span *ngIf="column.property == 'project_id'">{{row[column.property]}}</span>
+                        <span class="row-center center"
+                            *ngIf="(column.property != 'per_complete' && column.property != 'per_margin_plan' && column.property != 'project_id' &&
+                        column.property != 'per_actual_margin' && column.property != 'per_planned_margin' && column.property != 'per_budget_variance')">{{
+                            row[column.property] | numberTransform }}</span>
+                        <span class="row-center center"
+                            *ngIf="(column.property == 'per_complete' || column.property == 'per_margin_plan' || 
+                        column.property == 'per_actual_margin' || column.property == 'per_planned_margin' || column.property == 'per_budget_variance')">{{
+                            sliceNumber(row[column.property]) }}</span>
+                    </td>
+                </ng-container>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="visibleColumns; sticky: true"></tr>
+            <tr mat-row [ngStyle]="{ 'background-color': i % 2 !== 0 ? '#E1E1E1' : 'white'}"
+                *matRowDef="let row; let i = index; columns: visibleColumns;"
+                [ngClass]="{'table-outer-div-colored' : i == 0}"></tr>
+        </table>
+    </div>
+</div>
+
+<mat-menu class="px-4 py-3 cursor-pointer" #portfolioMenu="matMenu" yPosition="below"
+    (click)="$event.stopPropagation();">
+    <div class="row-start center" *ngFor="let portfolio of portfolioList;let i = index" (click)="onSelectPortfolio(i)">
+        <img class="mr-1" src="assets/icons/info-icon.svg" alt="info icon"><span class="ml-2">{{portfolio?.desr}}</span>
+    </div>
+    <div class="text-center cursor-pointer text-primary mt-3">View All</div>
+    <mat-divider class="my-2"></mat-divider>
+    <div class="my-3"><b>Project List</b></div>
+    <div (click)="$event.stopPropagation()" class="mt-2 row-start center" *ngFor="let project of visibleProjectItems">
+        <mat-checkbox (click)="$event.stopPropagation()" color="primary"></mat-checkbox>
+        <span class="ml-2">{{project}}</span>
+    </div>
+    <div *ngIf="showMoreButtonVisible" class="text-center cursor-pointer text-primary mt-3" (click)="toggleItems()">Add More</div>
+</mat-menu>

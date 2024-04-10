@@ -1,0 +1,42 @@
+@import url(https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css);
+$theme-colors: (
+  'warning': #f85c04,
+);
+
+.display-5 {
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+
+.rap-button {
+  background-color: #ffffff;
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 0.2rem;
+  border: 2px solid #18b49c;
+  margin-right: 0.2rem;
+  cursor: pointer;
+
+  p {
+    display: inline !important;
+    font-weight: 600;
+    color: #18b49c;
+    font-size: 12px;
+    cursor: pointer;
+  }
+
+  i {
+    color: #18b49c;
+  }
+
+  &:hover {
+    background-color: #18b49c;
+
+    p,
+    i {
+      color: #ffffff;
+    }
+  }
+}

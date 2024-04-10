@@ -1,0 +1,31 @@
+Do NOT delete header,
+Object,Description
+Element,Frames
+Item,Concrete
+Work,Cast in-situ concrete
+Sub-task,Remove fromwork for concrete
+Element,Frames
+Item,fromwork to frames
+Work,Install wooden formwork to columns
+Sub-task,prepare formwork for installation
+Element,Wall
+Item,Blockwall
+Work,225mm blockwall laid
+Sub-task,prepare and organise blockwall to be use
+Element,Foundation
+Item,Excavation
+Work, dig the surface
+Sub-task,dig the ground to form a structure
+Element,Foundation
+Item,Backfilling
+Work,filling the surface
+Sub-task,import material for backfilling
+Element,window and door 
+Item,Concrete
+Work,cast in-situ concrete in window lintel
+Item,fromwork to window and door lintel
+Work,fromwork on both side and soffit of the lintel
+Sub-task,prepare fromwork for installation
+Item,Reinforcement 
+Work,straight and bent steel bars
+Sub-task,organise steel bars for use 

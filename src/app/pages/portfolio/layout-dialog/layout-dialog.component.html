@@ -1,0 +1,44 @@
+<div *ngIf="dialogName == 'LayoutDialog'">
+    <div class="row-space-between p-3">
+        <div class="row-center center">
+            <span class="new-layout-title-text">{{selectedOption}}</span>
+            <!-- <img class="ml-3" src="assets/icons/Edit.svg" alt="edit"> -->
+        </div>
+        <mat-form-field appearance="outline">
+            <mat-label>Select an option</mat-label>
+            <mat-select [(ngModel)]="selectedOption" (selectionChange)="onOptionSelected($event)">
+              <mat-option value="Current">Current</mat-option>
+              <mat-option value="Saved">Saved</mat-option>
+            </mat-select>
+          </mat-form-field>
+          
+          
+    </div>
+    <div class="button-group-bg-div my-2">
+        <button class="mx-1 px-2" *ngFor="let btn of filterButton" (click)="isClicked(btn)"
+            [ngClass]="btn === isActiveButton ? 'active-button' : 'inactive-button'">
+            {{ btn }}
+        </button>
+    </div>
+    <div class="table-layout-div p-3">
+        <div *ngFor="let column of columnsFilterList; let i = index" class="my-1">
+            <mat-checkbox (click)="$event.stopPropagation();toggleColumnVisibility(column, $event)" [disabled]="i==0" [(ngModel)]="column.visible"
+                color="primary">
+                {{ column.label == 'Contract Item'? 'Contract Description': column.label}}
+            </mat-checkbox>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="dialogName == 'CSVInputDialog'">
+    <div class="column">
+        <span class="new-layout-title-text">{{message}}</span>
+        <mat-form-field appearance="outline" color="primary" class="mb-4">
+            <input matInput placeholder="Type here" type="text" [(ngModel)]="inputValue" />
+        </mat-form-field>
+        <div class="row-end end">
+            <button mat-stroked-button class="mr-2" (click)="onClose()">Cancel</button>
+            <button mat-stroked-button type="submit" color="primary" [disabled]="inputValue.length==0" (click)="onSave()">{{calledFrom == 'projects'?'Save Portfolio':'Save file'}}</button>
+        </div>
+    </div>
+</div>

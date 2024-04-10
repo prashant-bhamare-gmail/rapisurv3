@@ -1,0 +1,106 @@
+@import '~bootstrap/scss/mixins/breakpoints';
+@import '~@nebular/theme/styles/global/breakpoints';
+
+.image-input-content {
+  display: grid;
+  /* stylelint-disable-next-line */
+  grid-template-columns: repeat(4, 1fr);
+
+  @include media-breakpoint-down(sm) {
+    /* stylelint-disable-next-line */
+    grid-template-columns: 1fr;
+  }
+
+  .button-disabled {
+    opacity: 0.3;
+  }
+
+  .btn-upload {
+    grid-column: 1 / 1;
+    cursor: pointer;
+
+    input {
+      display: none;
+    }
+
+    @include media-breakpoint-down(sm) {
+      grid-column: 1 / 1;
+    }
+  }
+
+  .file-stats {
+    padding-left: 0;
+    grid-column: 2 / 4;
+    list-style: none;
+    display: grid; /* stylelint-disable-next-line */
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+
+    li {
+      &:nth-child(even) {
+        grid-column: 2 / 5;
+        word-wrap: break-word;
+      }
+
+      &:nth-child(odd) {
+        grid-column: 1 / 1;
+      }
+    }
+
+    @include media-breakpoint-down(sm) {
+      grid-column: 1 / 1;
+    }
+  }
+}
+
+.document-input-content {
+  display: grid;
+  /* stylelint-disable-next-line */
+  grid-template-columns: repeat(3, 1fr);
+
+  @include media-breakpoint-down(sm) {
+    /* stylelint-disable-next-line */
+    grid-template-columns: 1fr;
+  }
+
+  .button-disabled {
+    opacity: 0.3;
+  }
+
+  .btn-upload {
+    grid-column: 1 / 1;
+    cursor: pointer;
+
+    input {
+      display: none;
+    }
+
+    @include media-breakpoint-down(sm) {
+      grid-column: 1 / 1;
+    }
+  }
+
+  .file-stats {
+    padding-left: 0;
+    grid-column: 2 / 4;
+    list-style: none;
+    display: grid; /* stylelint-disable-next-line */
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+
+    li {
+      &:nth-child(even) {
+        grid-column: 2 / 5;
+        word-wrap: break-word;
+      }
+
+      &:nth-child(odd) {
+        grid-column: 1 / 1;
+      }
+    }
+
+    @include media-breakpoint-down(sm) {
+      grid-column: 1 / 1;
+    }
+  }
+}

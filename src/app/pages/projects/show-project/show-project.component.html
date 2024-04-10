@@ -1,0 +1,292 @@
+<div class="modal-body">
+  <div class="container">
+    <div class="form-group display-5">
+      <div class="d-flex">
+        <!-- <a href="/app/projects" style="margin-top:-10px;" class="btn-sm m-2 align-self-end">
+          <i class="icon ion-md-arrow-round-back"></i>          
+        </a> -->
+
+        <button
+          nbButton
+          ghost
+          status="primary"
+          style="margin-top: -6px"
+          (click)="goToInitialPage()">
+          <nb-icon
+            icon="arrow-ios-back-outline"
+            style="text-decoration: none"></nb-icon>
+        </button>
+
+        <label for="comment"
+          >Project #:<a> {{ selectedProject?.id }}</a></label
+        >
+      </div>
+
+      <textarea class="form-control" rows="2" id="comment" disabled>{{
+        selectedProject?.Description
+      }}</textarea>
+    </div>
+    <div class="d-flex justify-content-between">
+      <span class="align-self-center font-weight-bold"> Project Info </span>
+
+      <div class="rap-button" (click)="editProjectInfo()">
+        <i class="icon ion-md-create"></i>
+        <p> Update </p>
+      </div>
+
+    </div>
+    <div class="container border rounded">
+      <div class="row p-2 bg-light text-muted font-weight-bold">
+        <div class="col-3">
+          <span class="text-truncate">Location</span>
+        </div>
+        <div class="col-3">
+          <span class="text-truncate">Storage Location</span>
+        </div>
+        <div class="col-2 text-truncate">Last Activity</div>
+        <div class="col-2 text-truncate">Status</div>
+        <div class="col-2 text-truncate">Collaborator</div>
+        <!-- Add more header columns as needed -->
+      </div>
+      <div class="row p-2">
+        <div class="col-3">
+          {{ selectedProject?.location ?? 'No location set' }}
+        </div>
+        <div class="col-3">
+          {{
+            selectedProject?.storage_location_name ?? 'No storage location set'
+          }}
+        </div>
+        <div class="col-2">{{ selectedProject?.recent?.module }}</div>
+        <div class="col-2">{{ selectedProject?.status ?? 'Open' }}</div>
+        <div class="col-2">
+          {{ selectedProject?.collaboration?.collaborators ?? 'Non' }}
+        </div>
+      </div>
+
+      <div class="row p-2 bg-light text-muted font-weight-bold">
+        <div class="col-3 text-truncate">
+          <span class="">Project Currency</span>
+        </div>
+        <div class="col-3 text-truncate">Other Currency</div>
+        <div class="col-2 text-truncate">Ex. Rate</div>
+        <div class="col-2">Calculation</div>
+        <div class="col-2">Minutes</div>
+
+        <!-- Add more header columns as needed -->
+      </div>
+      <div class="row p-2">
+        <div class="col-3">
+          {{ selectedProject?.project_currency ?? 'NGN' }}
+        </div>
+        <div class="col-3">
+          {{ selectedProject?.other_currency ?? 'Not set' }}
+        </div>
+        <div class="col-2">
+          {{ selectedProject?.ex_rate?.toLocaleString('en-US') ?? 'Not set' }}
+        </div>
+        <div class="col-2">{{ selectedProject?.calculation ?? 'Not set' }}</div>
+        <div class="col-2">
+          {{ selectedProject?.minute_count?.toLocaleString('en-US') ?? '0' }}
+        </div>
+
+        <!-- Add more data cells for the second row p-2 as needed -->
+      </div>
+      <!-- Add more rows with data cells as needed -->
+
+      <div class="row p-2 bg-light text-muted font-weight-bold">
+        <div class="col-3">Issues</div>
+        <div class="col-3 text-truncate">Document Location</div>
+        <div class="col-2 text-truncate">Scope of work</div>
+        <!-- Add more header columns as needed -->
+      </div>
+
+      <div class="row p-2">
+        <div class="col-3">
+          {{ selectedProject?.issue_count?.toLocaleString('en-US') ?? '0' }}
+        </div>
+        <div class="col-3 text-truncate">
+          <a href="#">{{ selectedProject?.project_folder ?? 'No link' }} </a>
+        </div>
+        <div class="col-2">{{ selectedProject?.scope_of_work }}</div>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-between" style="margin-top: 10px;">
+      <span class="align-self-center font-weight-bold">
+        Project Financials
+      </span>
+
+      <div class="rap-button" (click)="editProjectFinancial()">
+        <i class="icon ion-md-add-circle"></i>
+        <p> Actual cost </p>
+      </div>
+
+    </div>
+    <div class="container border rounded">
+      <div class="row p-2 bg-light text-muted font-weight-bold">
+        <div class="col-2">
+          <span class="text-truncate"></span>
+        </div>
+        <div class="col-2 text-truncate">Cost Plan</div>
+        <div class="col-2 text-truncate">Budget</div>
+        <div class="col-2 text-truncate">Forecast to Finish</div>
+        <div class="col-2 text-truncate">ETC</div>
+        <div class="col-2 text-truncate">Actual cost</div>
+
+        <!-- Add more header columns as needed -->
+      </div>
+      <div class="row p-2 text-truncate">
+        <div class="col-2">Project Currency</div>
+        <div class="col-2">
+          {{ selectedProject?.cost_plan?.toLocaleString('en-US') ?? '0' }}
+        </div>
+        <div class="col-2">
+          {{ selectedProject?.budget?.toLocaleString('en-US') ?? '0' }}
+        </div>
+        <div class="col-2">{{ selectedProject?.forecast_finish ?? '0' }}</div>
+        <div class="col-2">{{ selectedProject?.etc ?? '0' }}</div>
+        <div class="col-2">
+          {{ selectedProject?.actual_cost?.toLocaleString('en-US') ?? '0' }}
+        </div>
+      </div>
+
+      <div class="row p-2 text-truncate">
+        <div class="col-2">Other Currency</div>
+        <div class="col-2">
+          {{
+            selectedProject?.other_currency_data?.cost_plan?.toLocaleString(
+              'en-US'
+            ) ?? '0'
+          }}
+        </div>
+        <div class="col-2">
+          {{
+            selectedProject?.other_currency_data?.budget?.toLocaleString(
+              'en-US'
+            ) ?? '0'
+          }}
+        </div>
+        <div class="col-2">
+          {{ selectedProject?.other_currency_data?.forecast_finish ?? '0' }}
+        </div>
+        <div class="col-2">
+          {{ selectedProject?.other_currency_data?.etc ?? '0' }}
+        </div>
+        <div class="col-2">
+          {{
+            selectedProject?.other_currency_data?.actual_cost?.toLocaleString(
+              'en-US'
+            ) ?? '0'
+          }}
+        </div>
+      </div>
+
+      <!-- Add more rows with data cells as needed -->
+    </div>
+
+    <div class="d-flex justify-content-between" style="margin-top: 10px;">
+      <span class="align-self-center font-weight-bold"> Project Dates </span>
+
+      <div class="rap-button" (click)="editProjectDates()">
+        <i class="icon ion-md-add-circle"></i>
+        <p> Date </p>
+      </div>
+
+    </div>
+    <div class="container border rounded">
+      <div class="row p-2 bg-light text-muted font-weight-bold">
+        <div class="col">
+          <span class="text-truncate"></span>
+        </div>
+        <div class="col text-truncate">Start Date</div>
+        <div class="col text-truncate">Finish Date</div>
+        <div class="col text-truncate">Duration</div>
+        <div class="col text-truncate">Forecast Finish Date</div>
+
+        <!-- Add more header columns as needed -->
+      </div>
+      <div class="row p-2 text-truncate">
+        <div class="col">Plan</div>
+        <div class="col">
+          {{ selectedProject?.project_dates_plan?.planned_start ?? 'Not set' }}
+        </div>
+        <div class="col">
+          {{ selectedProject?.project_dates_plan?.planned_finish ?? 'Not set' }}
+        </div>
+        <div class="col">
+          {{
+            selectedProject?.project_dates_plan?.planned_duration ?? 'Not set'
+          }}
+          {{ selectedProject?.project_dates_plan?.duration_unit ?? 'Not set' }}
+        </div>
+        <div class="col">
+          {{
+            selectedProject?.project_dates_plan?.forecast_finish_date ??
+              'Not set'
+          }}
+        </div>
+      </div>
+
+      <div class="row p-2 text-truncate">
+        <div class="col">Actual</div>
+        <div class="col">
+          {{ selectedProject?.project_dates_plan?.actual_start ?? 'Not set' }}
+        </div>
+        <div class="col">
+          {{ selectedProject?.project_dates_plan?.actual_finish ?? 'Not set' }}
+        </div>
+        <div class="col">
+          {{
+            selectedProject?.project_dates_plan?.planned_duration ?? 'Not set'
+          }}
+          {{ selectedProject?.project_dates_plan?.duration_unit ?? 'Not set' }}
+        </div>
+        <div class="col"></div>
+      </div>
+
+      <!-- Add more rows with data cells as needed -->
+    </div>
+
+    <div class="d-flex justify-content-between" style="margin-top: 10px;">
+      <span class="align-self-center font-weight-bold">
+        Project Participants
+      </span>
+
+   
+      <div class="rap-button" (click)="editProjectParticipant()">
+        <i class="icon ion-md-add-circle"></i>
+        <p> Participant </p>
+      </div>
+
+
+    </div>
+    <div class="container border rounded">
+      <div class="row p-2 bg-light text-muted font-weight-bold">
+        <div class="col">
+          <span class="text-truncate">Role</span>
+        </div>
+        <div class="col text-truncate">Name</div>
+        <div class="col text-truncate">Contact person</div>
+        <div class="col text-truncate">Email</div>
+        <div class="col text-truncate">Phone</div>
+        <!-- Add more header columns as needed -->
+      </div>
+      <ng-container *ngIf="selectedProject?.participants">
+        <div
+          class="row p-2 text-truncate"
+          *ngFor="let participant of selectedProject.participants">
+          <div class="col" style="text-transform: capitalize">
+            {{ participant?.participant_role }}
+          </div>
+          <div class="col">{{ participant?.name }}</div>
+          <div class="col">{{ participant?.contact_person }}</div>
+          <div class="col">{{ participant?.email }}</div>
+          <div class="col">{{ participant?.phone }}</div>
+        </div>
+      </ng-container>
+
+      <!-- Add more rows with data cells as needed -->
+    </div>
+  </div>
+</div>

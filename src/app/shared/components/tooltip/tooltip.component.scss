@@ -1,0 +1,96 @@
+// @use 'scss/globals';
+// @use 'scss/tooltip';
+
+:host {
+    border-bottom: dotted 1px #8a8a8a;
+    cursor: help;
+    //font-weight: bold;
+    position: relative;
+}
+
+
+// Primary
+// _________________________________________________________________________________________
+
+// 01
+$g-root__color--primary--01a:   #F15B2A;
+$g-root__color--primary--01b:   #C43B0E;
+$g-root__color--primary--01c:   #F69C7E;
+
+// 02
+$g-root__color--primary--02a:   #2A9FBC;
+$g-root__color--primary--02b:   #1F778D;
+$g-root__color--primary--02c:   #76CBE0;
+
+// 03
+$g-root__color--primary--03a:   #404040;
+
+
+
+
+// Secondary
+// _________________________________________________________________________________________
+
+// 01
+$g-root__color--secondary--01a: #A62E5C;
+$g-root__color--secondary--01b: #7D2345;
+$g-root__color--secondary--01c: #D8739A;
+
+// 02
+$g-root__color--secondary--02a: #8BC850;
+$g-root__color--secondary--02b: #77A032;
+$g-root__color--secondary--02c: #C3DE96;
+
+// 03
+$g-root__color--secondary--03a: #675BA7;
+$g-root__color--secondary--03b: #4D447E;
+$g-root__color--secondary--03c: #A49DCA;
+
+// 04
+$g-root__color--secondary--04a: #171717;
+$g-root__color--secondary--04b: #303030;
+$g-root__color--secondary--04c: #E5E5E5;
+
+
+
+.tooltip {
+    background-color: $g-root__color--primary--03a;
+    border-radius: 0;
+    color: white;
+    font-size: 75%;
+    font-weight: normal;
+    left: 50%;
+    line-height: 1.5;
+    overflow: visible;
+    opacity: 0;
+    padding: 0.75rem 1rem;
+    pointer-events: none;
+    position: absolute;
+    top: 120%;
+    transition: opacity ease 0.25s;
+    transform: translateX(-50%);
+    width: 12em;
+    z-index: 1;
+
+    &::before {
+        border: inset 0.75rem;
+        border-bottom-style: solid;
+        border-color: transparent transparent $g-root__color--primary--03a;
+        border-top-width: 0;
+        bottom: 100%;
+        content: "";
+        display: block;
+        height: 0;
+        left: 50%;
+        position: absolute;
+        transform: translateX(-50%);
+        width: 0;
+    }
+
+    // Opened
+    :host:hover > & {
+        opacity: 1;
+        pointer-events: all;
+    }
+
+}

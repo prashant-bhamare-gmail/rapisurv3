@@ -1,0 +1,170 @@
+<div class="modal-body">
+  <div class="row">
+    <div class="col-md-6"></div>
+    <div class="col-md-6">
+      <button
+        class="close"
+        style="margin-right: 20px"
+        aria-label="Close"
+        (click)="closeModal('close')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <p style="font-size: 12; font-weight: bold; text-align: center">
+        Project Dates
+      </p>
+    </div>
+  </div>
+
+  <section>
+    <div class="popup">
+      <div class="popup_container">
+        <div class="issue_name_desc">
+          <form [formGroup]="projectEditForm" ngNativeValidate>
+            <div class="row">
+              <div class="col-6">
+                <div class="form-group">
+                  <label
+                    for="inputEmail4"
+                    style="font-size: 12px; margin-bottom: -5px"
+                    class="form-label">
+                    Planned Start</label
+                  >
+                  <input
+                    type="date"
+                    name="planned_start"
+                    id="planned_start"
+                    class="form-control form-control-sm"
+                    formControlName="planned_start"
+                    required />
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label
+                    for="inputEmail4"
+                    style="font-size: 12px; margin-bottom: -5px"
+                    class="form-label">
+                    Planned Finish</label
+                  >
+                  <input
+                    type="date"
+                    name="planned_finish"
+                    id="planned_finish"
+                    class="form-control form-control-sm"
+                    formControlName="planned_finish"
+                    required />
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-6">
+                <div class="form-group">
+                  <label
+                    for="inputEmail4"
+                    style="font-size: 12px; margin-bottom: -5px"
+                    class="form-label">
+                    Planned Duration:</label
+                  >
+                  <input
+                    type="number"
+                    name="planned_duration"
+                    id="planned_duration"
+                    class="form-control form-control-sm"
+                    formControlName="planned_duration"
+                    placeholder="0"
+                    required />
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label
+                    for="inputEmail4"
+                    style="font-size: 12px; margin-bottom: -5px"
+                    class="form-label">
+                    Duration Unit:</label
+                  >
+                  <ng-select
+                    [items]="unitData"
+                    bindLabel="name"
+                    dropdownPosition="auto"
+                    bindValue="value"
+                    labelForId="duration_unit"
+                    placeholder="Set duration unit"
+                    formControlName="duration_unit">
+                  </ng-select>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <div class="form-group">
+                  <label
+                    for="inputEmail4"
+                    style="font-size: 12px; margin-bottom: -5px"
+                    class="form-label">
+                    Actual Start</label
+                  >
+                  <input
+                    type="date"
+                    name="actual_start"
+                    id="actual_start"
+                    class="form-control form-control-sm"
+                    formControlName="actual_start"
+                    required />
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label
+                    for="inputEmail4"
+                    style="font-size: 12px; margin-bottom: -5px"
+                    class="form-label">
+                    Actual Finish</label
+                  >
+                  <input
+                    type="date"
+                    name="actual_finish"
+                    id="ex_rate"
+                    class="form-control form-control-sm"
+                    formControlName="actual_finish"
+                    required />
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-group">
+                  <label
+                    for="inputEmail4"
+                    style="font-size: 12px; margin-bottom: -5px"
+                    class="form-label">
+                    How many more days would you need from planned finish
+                    date?</label
+                  >
+                  <input
+                    type="number"
+                    name="extra_day"
+                    id="extra_day"
+                    class="form-control form-control-sm"
+                    formControlName="extra_day"
+                    required />
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="downloadButtonContainer"
+              style="text-align: center"
+              (click)="submitBtn()">
+              <div class="dash_action_cta">Add Date</div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

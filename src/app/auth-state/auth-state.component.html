@@ -1,0 +1,101 @@
+<nb-layout>
+  <nb-layout-column>
+    <div class="signup">
+      <div class="signup_container">
+        <div class="signup_row1">
+          <div class="signup_header">
+            <img src="assets/images/favicon2.png" alt="" />
+            <p class="signup_header_p">Rapisurv Workspace</p>
+          </div>
+          <h1>Welcome back!</h1>
+
+          <div class="signup_input_container">
+            <form [formGroup]="loginForm" autocomplete="off">
+              <input
+                type="text"
+                placeholder="Username"
+                formControlName="unmn" />
+              <input
+                type="password"
+                *ngIf="!is2Fa && isLoggedIn"
+                placeholder="Password"
+                formControlName="password" />
+              <input
+                type="text"
+                *ngIf="is2Fa && isLoggedIn && !isRecoveryCode"
+                placeholder="Code"
+                formControlName="code" />
+              <input
+                type="text"
+                *ngIf="is2Fa && isLoggedIn && isRecoveryCode"
+                placeholder="Recovery Code"
+                formControlName="recovery_code" />
+            </form>
+          </div>
+
+          <div class="alert alert-danger" *ngIf="authError">
+            {{ authError }}
+          </div>
+          <div class="form-group">
+            <a
+              (click)="showRecoveryCode()"
+              style="cursor: pointer"
+              *ngIf="is2Fa && isLoggedIn">
+              <strong *ngIf="isRecoveryCode">Use an authentication code</strong>
+              <strong *ngIf="!isRecoveryCode">Use a recovery code</strong>
+            </a>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <button
+                class="signup_button"
+                style="display: inline; width: 80%"
+                (click)="onClickSubmitLogin()">
+                Login
+              </button>
+            </div>
+            <div class="col-md-6">
+              <button
+                class="signup_button"
+                style="display: inline; width: 80%"
+                *ngIf="isLoggedIn"
+                (click)="reset()">
+                Back
+              </button>
+            </div>
+          </div>
+
+          <div class="signup_create_account_p" style="margin-top: 17px">
+            Don't have an account?
+            <strong>Sign Up</strong> <br />
+            <p style="cursor: pointer" (click)="resetPassword()">
+              Reset password
+            </p>
+          </div>
+
+          <div class="multi_step_signup">
+            <span></span>
+            <span class="multi_step_signup2"></span>
+          </div>
+        </div>
+        <div class="signup_row2">
+          <!-- <img src="assets/images/lock.png" alt="" class="lock_img" /> -->
+          <div class="signup_testimonial">
+            <h4>
+              Enable 2-Factor authentication for additional security after
+              login.
+            </h4>
+            <!-- <div class="name_and_stars">
+          <button class="sec_next_button">
+            Enable 2-FA
+            <span><ion-icon name="chevron-forward-outline"></ion-icon></span>
+          </button>
+        </div> -->
+          </div>
+          <img class="auth_img" src="assets/login_username.png" />
+        </div>
+      </div>
+    </div>
+  </nb-layout-column>
+</nb-layout>

@@ -1,0 +1,150 @@
+// table {
+//   width: 100%;
+// }
+
+// .table-outer-div {
+//   height: 69vh;
+//   overflow: auto !important;
+// }
+
+// .custom-width-search {
+//   width: 380px;
+// }
+
+// .custom-width-filter {
+//   width: 100px;
+// }
+
+// .custom-width-report {
+//   width: 160px;
+// }
+
+// .mat-menu-panel {
+//   min-width: 150px !important;
+// }
+
+// .colored-text {
+//   text-decoration: none;
+//   cursor: pointer;
+//   color: #12af9b !important;
+// }
+
+// .mat-cell,
+// .mat-header-cell {
+//   border: none;
+// }
+
+// .table-header-text {
+//   font-size: 14px;
+//   font-weight: 700;
+//   color: #6f6f6f;
+//   line-height: 31.49px;
+// }
+
+// .table-cell-text {
+//   font-size: 14px;
+//   font-weight: 400;
+//   color: #6f6f6f;
+//   line-height: 31.49px;
+// }
+
+// .form-control {
+//   padding: 0.375rem 0.75rem;
+//   border: 1px solid #f3f3f3;
+//   border-radius: 0.25rem;
+//   transition:
+//     border-color 0.15s ease-in-out,
+//     box-shadow 0.15s ease-in-out;
+// }
+
+// .page-title {
+//   margin-bottom: 20px;
+//   font-weight: 600;
+//   font-size: 24px;
+//   color: #3e3e3e;
+// }
+
+
+
+/////
+/// 
+ table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  // border: 1px solid #ccc;
+  padding: 8px;
+  vertical-align: middle;
+  text-align: left;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+tbody tr td {
+  border-bottom: 2px solid #f2f2f2;
+  /* Remove borders for all cells in tbody */
+}
+
+tbody tr:hover {
+  background-color: #f2f2f2;
+  /* Remove borders for all cells in tbody */
+}
+
+tbody tr td p {
+  text-decoration: none;
+  font-size: 12px;
+  margin: 0;
+  padding: 0;
+}
+
+.asc {
+  margin-top: 8px;
+}
+
+.desc {
+  margin-top: 3px;
+}
+
+.selected-row {
+  background-color: rgba(248, 92, 4, 0.1019607843); // #ffd9c4;
+  color: white;
+  /* Add this if you want to change the text color to white for better visibility */
+  cursor: pointer;
+  /* Add this if you want to show a pointer cursor on hover */
+}
+
+
+
+
+th:first-child,
+td:first-child {
+    width: 10%;
+} 
+
+// th:nth-child(2),
+// td:nth-child(2) {
+//     width: 5%;
+// } 
+
+th:nth-child(3),
+td:nth-child(3) {
+    width: 10%;
+} 
+
+th:nth-child(4),
+td:nth-child(4) {
+    width: 15%;
+} 
+
+
+th:nth-child(5),
+td:nth-child(5) {
+    width: 20%;
+} 

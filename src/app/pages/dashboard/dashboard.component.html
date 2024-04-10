@@ -1,0 +1,180 @@
+<ngx-spinner></ngx-spinner>
+
+<div class="row">
+  <div class="col-md-4">
+    <div class="mb-3">
+      <button class="btn btn-block" style="margin-top: 13px" outline status="primary" nbButton size="small"
+        (click)="createProject()">
+        Start a new project
+      </button>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="mb-3">
+
+      <button class="btn btn-block" style="margin-top: 13px" outline status="primary" nbButton size="small"
+      (click)="onChangeView()">
+      Switch to Portfolio View
+    </button>
+
+      <!-- <mat-form-field appearance="outline" class="my-2 ml-3 file-input-container">
+        <span matPrefix [class]="isPortfolioMode ? 'standard-view' : 'portfolio-view'"></span>
+        <mat-select placeholder="Switch to Portfolio View" (selectionChange)="onChangeView($event.value)">
+          <mat-option value="portfolioView">Switch to Portfolio View</mat-option>
+        </mat-select>
+      </mat-form-field> -->
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <div *ngIf="!isLicenced" style="margin-top: 20px">
+      <a style="color: #f85c04; text-decoration: underline; cursor: pointer" (click)="subscribe()">You have no active
+        license. Please Subscribe here</a>
+    </div>
+
+    <div>
+      <p class="section_header" style="margin-left: 5px">Recently used apps</p>
+
+      <div *ngFor="let item of items" class="list-item" (click)="openApp(item.text, item)">
+        <div class="left-icon">
+          <img [src]="getImage(item.text)" style="width: 25px; height: 25px" alt="" />
+        </div>
+        <div class="text">
+          {{ item.text }}
+        </div>
+        <div class="right-icon">
+          <mat-icon matTooltip="Open" style="font-weight: 400; font-size: 15px; margin-top: 10px"
+            class="material-symbols-outlined">arrow_outward</mat-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-9">
+    <p class="section_header">Recent projects</p>
+    <div>
+      <div class="row">
+        <div class="col-sm-3" style="margin-bottom: 12px; padding-left: 5px; padding-right: 5px"
+          *ngFor="let c of recentProjects; let i = index" (click)="openProject(c.recent ? c.recent.module : 'N/A', c)">
+          <div class="cards">
+            <p style="font-size: 12px">
+              <span class="project_id">
+                {{ c.id }}
+              </span>
+            </p>
+            <p style="font-size: 12px" *ngIf="c.Description.length <= 30" [matTooltip]="c.Description">
+              {{ c.Description }}
+            </p>
+            <p style="font-size: 12px" *ngIf="c.Description.length > 30" [matTooltip]="c.Description">
+              {{ c.Description | shortenText: 50 }}
+            </p>
+            <p class="text-emphasized">
+              {{ c.recent ? c.recent.module : 'N/A' }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="row" style="margin-bottom: 5px">
+      <div class="col-sm-12">
+        <p style="text-align: left" class="section_header">Project Charts</p>
+      </div>
+    </div>
+
+    <form [formGroup]="graphForm">
+      <div class="row" style="margin-bottom: 5px">
+        <div class="col-sm-3"  >
+          <div class="form-group">
+            <ng-select [items]="graphs" (change)="selectProject()" appendTo="body" bindLabel="name"
+              dropdownPosition="auto" bindValue="name" labelForId="name" placeholder="Select Data source"
+              formControlName="graph">
+            </ng-select>
+          </div>
+        </div>
+
+        <div class="col-sm-3"  >
+          <div class="form-group">
+            <ng-select [items]="projectsData" (change)="selectProject()" appendTo="body" bindLabel="displayName"
+              dropdownPosition="auto" bindValue="project_id" labelForId="project_id" placeholder="Select Project"
+              formControlName="projectId">
+            </ng-select>
+          </div>
+        </div>
+
+        <div class="col-sm-3" *ngIf="isBids">
+          <div class="form-group" style="margin-right: 5px">
+            <ng-select [items]="bidsTocompare" (change)="selectProject()" [closeOnSelect]="false" [multiple]="true"
+              appendTo="body" bindLabel="name" dropdownPosition="auto" bindValue="id" labelForId="id"
+              placeholder="Select Bids" formControlName="bidIds">
+            </ng-select>
+          </div>
+        </div>
+
+        <div class="col-sm-3" *ngIf="isVersions">
+          <div class="form-group" style="margin-right: 5px">
+            <ng-select [items]="costVersions" (change)="selectProject()" [closeOnSelect]="false" [multiple]="true"
+              appendTo="body" bindLabel="name" dropdownPosition="auto" bindValue="id" labelForId="id"
+              placeholder="Select Versions" formControlName="versionId">
+            </ng-select>
+          </div>
+        </div>
+
+        <div class="col-sm-3"> 
+          <button class="btn btn-block" outline status="primary" nbButton *ngIf="isVersions" style="margin-top: -1px;height:30px;"
+            (click)="estimateBtn()">
+            Show graph
+          </button>
+          <button class="btn btn-block" outline status="primary" nbButton *ngIf="isBids" style="margin-top: -1px;height:30px;" (click)="bidComparisonBtn()"
+            size="small">
+            Show graph
+          </button>
+        </div>
+      </div>
+    </form>
+
+    <div class="row" *ngIf="showContract">
+      <div class="col-sm-6">
+        <div class="mb-3" style="background-color: #f3f9f7">
+          <div>
+            <div class="row" style="margin-bottom: 4px">
+              <div id="contractSummaryChart" style="width: 100%; height: 400px"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="card mb-3" style="background-color: #f3f9f7">
+          <div class="card-body">
+            <div id="varianceContractChart" style="width: 100%; height: 400px"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row" *ngIf="showEstimate || showBidComparison">
+      <div class="col-sm-12">
+        <div class="mb-3" style="background-color: #f3f9f7">
+          <div>
+            <div class="row" style="margin-bottom: 4px">
+              <div id="estimateChart" style="width: 100%; height: 400px"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+
+</div>

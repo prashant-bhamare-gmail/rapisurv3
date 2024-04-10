@@ -1,0 +1,31 @@
+<div class="modal-body">
+  <img
+    class="img-fluid"
+    [attr.src]="image ? image : 'assets/images/no-image.png'"
+  />
+</div>
+<div class="modal-footer">
+  <div class="row">
+    <div class="col">
+      <button
+        *ngIf="fileId"
+        type="button"
+        class="btn btn-danger btn-block"
+        aria-label="Close"
+        (click)="deleteImage()"
+      >
+        Delete
+      </button>
+    </div>
+    <div class="col">
+      <button
+        type="button"
+        class="btn btn-primary btn-block"
+        aria-label="Close"
+        (click)="handle()"
+      >
+        Close
+      </button>
+    </div>
+  </div>
+</div>

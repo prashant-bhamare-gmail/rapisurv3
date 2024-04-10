@@ -1,0 +1,251 @@
+<div class="modal-body">
+  <div class="row">
+    <div class="col-md-6"></div>
+    <div class="col-md-6">
+      <button
+        class="close"
+        style="margin-right: 20px"
+        aria-label="Close"
+        (click)="closeModal('close')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <p style="font-size: 12; font-weight: bold; text-align: center">
+        Project Financials
+      </p>
+    </div>
+  </div>
+
+  <section>
+    <div class="popup">
+      <div class="popup_container">
+        <div class="issue_name_desc">
+          <form [formGroup]="projectEditForm" ngNativeValidate>
+            <div class="row">
+              <div class="col-12">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="exampleRadios"
+                    id="exampleRadios1"
+                    value="option1"
+                    checked />
+                  <label class="form-check-label" for="exampleRadios1">
+                    Actual Cost Total
+                  </label>
+                </div>
+                <input
+                  type="text"
+                  name="actual_cost"
+                  id="actual_cost"
+                  class="form-control form-control-sm"
+                  formControlName="actual_cost"
+                  placeholder="0"
+                  required />
+              </div>
+            </div>
+            <div class="row mt-3 mb-1">
+              <div class="col-8">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="exampleRadios"
+                    id="exampleRadios1"
+                    value="option1"
+                    checked />
+                  <label class="form-check-label" for="exampleRadios1">
+                    Actual Cost by Period
+                  </label>
+                </div>
+              </div>
+
+              <div class="col-4">
+                <input
+                  type="text"
+                  name="actual_cost_period"
+                  id="actual_cost_period"
+                  class="form-control form-control-sm"
+                  formControlName="actual_cost_period"
+                  style="text-transform: uppercase; font-size: 10px"
+                  placeholder="YYYY"
+                  required
+                  pattern="\d{4}" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <div class="form-group">
+                  <input
+                    type="number"
+                    name="actual_cost_months['jan']"
+                    id="actual_cost_months_jan"
+                    class="form-control form-control-sm"
+                    formControlName="jan"
+                    style="text-transform: uppercase; font-size: 10px"
+                    placeholder="Jan"
+                    required />
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-group">
+                  <input
+                    type="number"
+                    name="actual_cost_months['feb']"
+                    id="actual_cost_months_feb"
+                    class="form-control form-control-sm"
+                    formControlName="feb"
+                    style="text-transform: uppercase; font-size: 10px"
+                    placeholder="Feb"
+                    required />
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-group">
+                  <input
+                    type="number"
+                    name="actual_cost_months['jan']"
+                    id="actual_cost_months_jan"
+                    class="form-control form-control-sm"
+                    formControlName="mar"
+                    style="text-transform: uppercase; font-size: 10px"
+                    placeholder="Mar"
+                    required />
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-group">
+                  <input
+                    type="number"
+                    name="actual_cost_months['jan']"
+                    id="actual_cost_months_jan"
+                    class="form-control form-control-sm"
+                    formControlName="apr"
+                    style="text-transform: uppercase; font-size: 10px"
+                    placeholder="Apr"
+                    required />
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-group">
+                  <input
+                    type="number"
+                    name="actual_cost_months['jan']"
+                    id="actual_cost_months_jan"
+                    class="form-control form-control-sm"
+                    formControlName="may"
+                    style="text-transform: uppercase; font-size: 10px"
+                    placeholder="May"
+                    required />
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-group">
+                  <input
+                    type="number"
+                    name="actual_cost_months['jan']"
+                    id="actual_cost_months_jan"
+                    class="form-control form-control-sm"
+                    formControlName="jun"
+                    style="text-transform: uppercase; font-size: 10px"
+                    placeholder="Jun"
+                    required />
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-group">
+                  <input
+                    type="number"
+                    name="actual_cost_months['jan']"
+                    id="actual_cost_months_jan"
+                    class="form-control form-control-sm"
+                    formControlName="jul"
+                    style="text-transform: uppercase; font-size: 10px"
+                    placeholder="Jul"
+                    required />
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-group">
+                  <input
+                    type="number"
+                    name="actual_cost_months['jan']"
+                    id="actual_cost_months_jan"
+                    class="form-control form-control-sm"
+                    formControlName="aug"
+                    style="text-transform: uppercase; font-size: 10px"
+                    placeholder="Aug"
+                    required />
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-group">
+                  <input
+                    type="number"
+                    name="actual_cost_months['jan']"
+                    id="actual_cost_months_jan"
+                    class="form-control form-control-sm"
+                    formControlName="sep"
+                    style="text-transform: uppercase; font-size: 10px"
+                    placeholder="Sep"
+                    required />
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-group">
+                  <input
+                    type="number"
+                    name="actual_cost_months['jan']"
+                    id="actual_cost_months_jan"
+                    class="form-control form-control-sm"
+                    formControlName="oct"
+                    style="text-transform: uppercase; font-size: 10px"
+                    placeholder="Oct"
+                    required />
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-group">
+                  <input
+                    type="number"
+                    name="actual_cost_months['jan']"
+                    id="actual_cost_months_jan"
+                    class="form-control form-control-sm"
+                    formControlName="nov"
+                    style="text-transform: uppercase; font-size: 10px"
+                    placeholder="Nov"
+                    required />
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-group">
+                  <input
+                    type="number"
+                    name="actual_cost_months['jan']"
+                    id="actual_cost_months_jan"
+                    class="form-control form-control-sm"
+                    formControlName="dec"
+                    style="text-transform: uppercase; font-size: 10px"
+                    placeholder="Dec"
+                    required />
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="downloadButtonContainer"
+              style="text-align: center"
+              (click)="submitBtn()">
+              <div class="dash_action_cta">Submit</div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

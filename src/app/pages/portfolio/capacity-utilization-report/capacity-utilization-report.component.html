@@ -1,0 +1,47 @@
+<div class="column pb-3">
+  <span class="main-heading-text">Capacity Utilization Report</span>
+  <div class="row-space-between center my-2">
+    <div class="column">
+      <span>Project: <b>{{projectDetails?.id}}</b> | {{projectDetails?.Description}} </span>
+      <span>Contract: <b></b></span>
+    </div>
+    <span class="chart-heading-text">{{projectDetails?.recent?.time | date:'d MMM, y'}}</span>
+  </div>
+  <div class="row-space-between end">
+    <span class="row-center center">
+      <img class="mr-1" src="assets/icons/info-icon.svg" alt="info icon">
+      <span class="helper-text"> Drag to the side to see full table view</span>
+    </span>
+    <div class="row mr-3">
+      <span class="mr-3 blue-text row-center center" (click)="openTableDialog()">
+        <img class="mr-2" src="assets/icons/Category.svg" alt="Category">
+        Change table layout
+      </span>
+      <button mat-stroked-button type="file" class="row-center center" (click)="openCSVDialog()">
+        <span>Export CSV</span>
+        <img class="ml-2" src="assets/icons/upload-icon.svg" alt="upload icon">
+      </button>
+    </div>
+  </div>
+</div>
+<div class="mx-3 table-outer-div">
+  <table [dataSource]="capacityUtilizationData" mat-table>
+    <ng-container *ngFor="let column of tableHeaderRow; trackBy: trackByProperty">
+      <ng-container [matColumnDef]="column.property">
+        <th *matHeaderCellDef class="table-data-text bg-gray center" mat-header-cell>
+          <span *ngIf="column.property == 'work_skill' || column.property == 'start_date'" [ngClass]="{'row-start':column.label =='Work Skill'}">{{ column.label }}</span>
+          <span *ngIf="!(column.property == 'work_skill' || column.property == 'start_date')">{{ column.label }} <br>%</span>
+        </th>
+        <td *matCellDef="let row" mat-cell class="cursor-pointer table-data-text">
+          <span class="row-center center" *ngIf="column.property != 'work_skill'">{{ row[column.property] }}</span>
+          <span class="row-start start" *ngIf="column.property == 'work_skill'" matTooltip="{{row[column.property]}}"
+            matTooltipDisabled="{{row[column.property]?.length < 30}}">{{ row[column.property]?.length >
+            40?(row[column.property] | slice : 0 : 40) + '...' : row[column.property]}}</span>
+        </td>
+      </ng-container>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="visibleColumns; sticky: true"></tr>
+    <tr mat-row [ngStyle]="{ 'background-color': i % 2 !== 0 ? '#E1E1E1' : 'white'}"
+      *matRowDef="let row; let i = index; columns: visibleColumns;"></tr>
+  </table>
+</div>

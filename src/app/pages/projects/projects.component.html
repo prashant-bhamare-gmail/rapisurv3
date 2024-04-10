@@ -1,0 +1,347 @@
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#f85c04" type="ball-atom" [fullScreen]="true">
+  <p style="color: #18b49c">Loading...</p>
+</ngx-spinner>
+
+<div class="row">
+  <div class="col-md-6">
+    <p class="page-title">Projects</p>
+  </div>
+  <div class="col-md-6">
+    <button class="btn btn-block" outline status="primary" nbButton size="small" (click)="createProject()">
+      Start a new project
+    </button>
+  </div>
+</div>
+
+<div class="col-md-12">
+  <div class="row-space-between center my-2">
+    <div class="row-start">
+      <div class="mr-4">
+        <mat-form-field appearance="outline" class="custom-width-search">
+          <!-- <mat-label>Search</mat-label> -->
+          <input matInput (keyup)="searchProjects($event)" name="Search"
+            placeholder="Search by project id, name and location" />
+        </mat-form-field>
+      </div>
+      <div class="mr-2">
+        <mat-form-field appearance="outline" class="custom-width-filter">
+          <!-- <mat-label>Filter</mat-label> -->
+          <mat-select (selectionChange)="filterProjects($event)" placeholder="Filter">
+            <mat-option *ngFor="let option of entriesStatus" [value]="option.name">
+              {{ option.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div *ngIf="selectedProject">
+        <form [formGroup]="graphForm">
+          <mat-form-field appearance="outline" class="custom-width-report">
+            <!-- <mat-label>Select Report</mat-label> -->
+            <mat-select formControlName="reportName" placeholder="Select Report" (selectionChange)="selectReport()">
+              <mat-option *ngFor="let option of selectOptions" [value]="option.value">
+                {{ option.value }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </form>
+      </div>
+    </div>
+    <div *ngIf="!isPortfolio" class="row-center center">
+      <div class="primary-button row-center center px-2 mr-2" (click)="isPortfolio = true">
+        <img class="mr-1" src="assets/icons/create-portfolio.svg" alt="create portfolio" />
+        <span>Create Portfolio</span>
+      </div>
+      <div class="primary-button row-center center px-2" [matMenuTriggerFor]="menu"
+        [ngClass]="selectedProject ? 'mr-2' : 'mr-4'">
+        <img class="mr-1" src="assets/icons/manage-portfolio.svg" alt="manage portfolio" />
+        <span>Manage Portfolio</span>
+      </div>
+      <div *ngIf="selectedProject" class="primary-button row-center center px-2 mr-4" (click)="editProject()">
+        <img class="mr-1" src="assets/icons/edit-green.svg" alt="edit" />
+        <span>Edit project</span>
+      </div>
+    </div>
+    <div *ngIf="isPortfolio" class="row-center">
+      <button *ngIf="isManagePortfolio" class="primary-button row-center center px-2 mr-2"
+        [disabled]="selectedProjectId.length == 0" (click)="deletePortfolio()">
+        <img class="mr-1" src="assets/icons/Delete.svg" alt="delete" />
+        <span>Delete Portfolio</span>
+      </button>
+      <button *ngIf="!isManagePortfolio" class="primary-button px-2 mr-2" [disabled]="selectedProjectId.length == 0"
+        (click)="openSavePortfolioDialog()">
+        Save Portfolio
+      </button>
+      <button class="primary-button" (click)="cancelCreatePortfolio()">
+        Cancel
+      </button>
+    </div>
+  </div>
+  <div class="table-outer-div">
+
+
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>
+            <div style="display: flex; flex-direction: row">
+              <p style="
+                  text-decoration: none;
+                  font-size: 12px;
+                  font-weight: bold;
+                  margin: 0;
+                  padding: 0;
+                ">
+                ID
+              </p>
+            </div>
+          </th>
+
+          <th>
+            <p style="
+                text-decoration: none;
+                font-size: 12px;
+                font-weight: bold;
+                margin: 0;
+                padding: 0;
+              ">
+              Project name
+            </p>
+          </th>
+          <!-- <th>
+            <p style="text-decoration: none;font-size: 12px;font-weight: bold;margin:0;padding:0">
+              Contract ID</p>
+          </th> -->
+
+          <th>
+            <p style="
+                text-decoration: none;
+                font-size: 12px;
+                font-weight: bold;
+                margin: 0;
+                padding: 0;
+              ">
+              Duration
+            </p>
+          </th>
+
+
+          <th>
+            <p style="
+                text-decoration: none;
+                font-size: 12px;
+                font-weight: bold;
+                margin: 0;
+                padding: 0;
+              ">
+              Last activity
+            </p>
+          </th>
+
+          <th>
+            <p style="
+                text-decoration: none;
+                font-size: 12px;
+                font-weight: bold;
+                margin: 0;
+                padding: 0;
+              ">
+              Status
+            </p>
+          </th>
+
+          <th>
+            <p style="
+                text-decoration: none;
+                font-size: 12px;
+                font-weight: bold;
+                margin: 0;
+                padding: 0;
+              ">
+              Project location
+            </p>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let element of recentProjects; let i = index" [ngClass]="{ 'selected-row': element.isSelected }">
+          <td>
+            <div style="display:flex;flex-direction:row">
+              <div *ngIf="!isPortfolio" class="mr-2">
+                <mat-radio-button [value]="element" color="primary" (click)="selectProject(element)"></mat-radio-button>
+              </div>
+              <div *ngIf="isPortfolio" class="mr-4">
+                <mat-checkbox [checked]="isProjectPresent(element)" color="primary" (change)="
+                    selectProjectsForPortfolio($event.checked, element.id)
+                  "></mat-checkbox>
+              </div>
+
+              <div>
+                <a class="colored-text" routerLink="/app/projects/{{ element.id }}">{{ element.id }}</a>
+              </div>
+
+            </div>
+          </td>
+
+          <td>
+            <p style="
+                text-decoration: none;
+                font-size: 12px;
+                margin: 0;
+                padding: 0;
+              ">
+              {{
+              element.Description.length > 100
+              ? (element.Description | shortenText: 100)
+              : element.Description
+              }}
+            </p>
+          </td>
+
+          <td>
+            <p style="
+                text-decoration: none;
+                font-size: 12px;
+                margin: 0;
+                padding: 0;
+              ">
+              {{ formatDuration(element.duration, element.duration_unit) }}
+            </p>
+          </td>
+          <td>
+            <p style="
+                text-decoration: none;
+                font-size: 12px;
+                margin: 0;
+                padding: 0;
+              ">
+              {{ element.recent ? element.recent.module : 'N/A' }}
+            </p>
+          </td>
+
+          <td>
+            <p style="
+                text-decoration: none;
+                font-size: 12px;
+                margin: 0;
+                padding: 0;
+              ">
+              {{ element.status ? element.status : 'Not set' }}
+            </p>
+          </td>
+
+          <td>
+            <p style="
+                text-decoration: none;
+                font-size: 12px;
+                margin: 0;
+                padding: 0;
+              ">
+              {{ element.location ? element.location : 'Not set' }}
+            </p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+
+
+
+
+    <!-- <table mat-table [dataSource]="recentProjects">
+      <ng-container matColumnDef="Project ID">
+        <th class="table-header-text" mat-header-cell *matHeaderCellDef>
+          Project ID
+        </th>
+        <td class="table-cell-text" mat-cell *matCellDef="let element">
+          <div class="row">
+            <div *ngIf="!isPortfolio" class="mr-2">
+              <mat-radio-button
+                [value]="element"
+                color="primary"
+                (click)="selectProject(element)"></mat-radio-button>
+            </div>
+            <div *ngIf="isPortfolio" class="mr-4">
+              <mat-checkbox
+                [checked]="isProjectPresent(element)"
+                color="primary"
+                (change)="
+                  selectProjectsForPortfolio($event.checked, element.id)
+                "></mat-checkbox>
+            </div>
+            <a
+              class="colored-text"
+              routerLink="/app/projects/{{ element.id }}"
+              >{{ element.id }}</a
+            >
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Project Name">
+        <th class="table-header-text" mat-header-cell *matHeaderCellDef>
+          Project Name
+        </th>
+        <td class="table-cell-text" mat-cell *matCellDef="let element">
+          {{
+            element.Description.length > 100
+              ? (element.Description | shortenText: 100)
+              : element.Description
+          }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Duration">
+        <th class="table-header-text" mat-header-cell *matHeaderCellDef>
+          Duration
+        </th>
+        <td class="table-cell-text" mat-cell *matCellDef="let element">
+          {{ formatDuration(element.duration, element.duration_unit) }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Last Activity">
+        <th class="table-header-text" mat-header-cell *matHeaderCellDef>
+          Last Activity
+        </th>
+        <td class="table-cell-text" mat-cell *matCellDef="let element">
+          {{ element.recent ? element.recent.module : 'N/A' }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Status">
+        <th class="table-header-text" mat-header-cell *matHeaderCellDef>
+          Status
+        </th>
+        <td class="table-cell-text" mat-cell *matCellDef="let element">
+          {{ element.status ? element.status : 'Not set' }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Location">
+        <th class="table-header-text" mat-header-cell *matHeaderCellDef>
+          Location
+        </th>
+        <td class="table-cell-text" mat-cell *matCellDef="let element">
+          {{ element.location ? element.location : 'Not set' }}
+        </td>
+      </ng-container>
+
+      <tr
+        mat-header-row
+        *matHeaderRowDef="projectTableColumns; sticky: true"></tr>
+      <tr
+        mat-row
+        [ngStyle]="{ 'background-color': i % 2 !== 0 ? '#F6F6F6' : 'white' }"
+        *matRowDef="let row; let i = index; columns: projectTableColumns"></tr>
+    </table> -->
+
+
+  </div>
+</div>
+
+<mat-menu #menu="matMenu" class="my-custom-menu">
+  <button mat-menu-item (click)="editPorfolioHandler(portfolio)" *ngFor="let portfolio of portfolioList">
+    {{ portfolio.desr }}
+  </button>
+</mat-menu>

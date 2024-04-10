@@ -1,0 +1,62 @@
+<!-- <div class="image-input-content" *ngIf="!document">
+  <div class="upload-button-container">
+    <label
+      class="btn btn-primary btn-upload"
+      [ngClass]="{ 'button-disabled': !enable }"
+    >
+      <span>{{title}}</span>
+      <input
+        type="file"
+        (change)="onFileChange($event.target.files)"
+        [disabled]="!enable"
+      />
+    </label>
+  </div>
+  <ul class="file-stats">
+    <li>
+      Name:
+    </li>
+    <li>{{ file?.name }}</li>
+    <li>
+      Size:
+    </li>
+    <li>{{ file?.size | fileSize }}</li>
+  </ul>
+  <img *ngIf="currentPic" [attr.src]="currentPic" height="60" width="100" />
+</div> --> 
+<div class="image-input-content">
+<div class="image-upload"  >
+  <label for="file-input">
+    <span>Upload</span>
+    </label>
+
+  <input id="file-input" type="file" (change)="onFileChange($event.target['files'])"
+  [disabled]="!enable"/>
+</div>
+<img *ngIf="currentPic" [attr.src]="currentPic" height="60" width="100" />
+</div>
+
+
+
+<div class="document-input-content" *ngIf="document">
+    <div class="upload-button-container">
+      <label
+        class="btn btn-primary btn-upload"
+      >
+        <span>Upload</span>
+        <input
+          type="file"
+          multiple
+          (change)="onFilesChange($event.target['files'])"
+        />
+      </label>
+    </div>
+    <ul class="file-stats">
+      <li>
+        Number of Files:
+      </li>
+      <li>{{ files?.length }}</li>
+    </ul>
+  </div>
+
+  

@@ -1,0 +1,110 @@
+<div class="modal-body">
+  <div class="row">
+    <div class="col-md-6"></div>
+    <div class="col-md-6">
+      <button
+        class="close"
+        style="margin-right: 20px"
+        aria-label="Close"
+        (click)="closeModal('close')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <p style="font-size: 12; font-weight: bold; text-align: center">
+        {{ selectedProject.displayName }}
+      </p>
+    </div>
+  </div>
+
+  <section>
+    <div class="popup">
+      <div class="popup_container">
+        <div class="issue_name_desc">
+          <form [formGroup]="projectEditForm">
+            <div class="form-group">
+              <label
+                for="inputEmail4"
+                style="font-size: 12px; margin-bottom: -5px"
+                class="form-label">
+                Duration:</label
+              >
+
+              <input
+                type="text"
+                name="issue"
+                id="email"
+                class="form-control form-control-sm"
+                formControlName="duration"
+                placeholder="Set duration"
+                required />
+            </div>
+
+            <div class="form-group">
+              <label
+                for="inputEmail4"
+                style="font-size: 12px; margin-bottom: -5px"
+                class="form-label">
+                Duration unit: {{ selectedProject.status }}</label
+              >
+
+              <ng-select
+                [items]="durationUnit"
+                bindLabel="name"
+                dropdownPosition="auto"
+                bindValue="value"
+                labelForId="id"
+                placeholder="Set new status"
+                formControlName="duration_unit">
+              </ng-select>
+            </div>
+
+            <div class="form-group">
+              <label
+                for="inputEmail4"
+                style="font-size: 12px; margin-bottom: -5px"
+                class="form-label">
+                Current Status: {{ selectedProject.status }}</label
+              >
+
+              <ng-select
+                [items]="statusData"
+                bindLabel="name"
+                dropdownPosition="auto"
+                bindValue="name"
+                labelForId="id"
+                placeholder="Set new status"
+                formControlName="status">
+              </ng-select>
+            </div>
+
+            <div class="form-group">
+              <label
+                for="inputEmail4"
+                style="font-size: 12px; margin-bottom: -5px"
+                class="form-label">
+                Location
+              </label>
+
+              <input
+                type="text"
+                name="issue"
+                id="email"
+                class="form-control form-control-sm"
+                formControlName="location"
+                placeholder="City, State, Zip Code"
+                required />
+            </div>
+
+            <div class="downloadButtonContainer" (click)="submitBtn()">
+              <div class="dash_action_cta">Submit</div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

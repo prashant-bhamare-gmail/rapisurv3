@@ -1,0 +1,219 @@
+.main-dashboard-container {
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 1rem;
+}
+
+.highcharts-container,
+.highcharts-background,
+.highcharts-plot-border {
+    height: 300px !important;
+}
+
+.chart-card {
+    min-width: 500px;
+    border-radius: 18px;
+    border: 1px solid #D4D4D4;
+    max-height: 500px;
+}
+
+.contract-sum-color {
+    background: #F293BB;
+}
+
+.revised-sum-color {
+    background: #67CBBC;
+}
+
+.approved-variation-color {
+    background: #878695;
+}
+
+.unapproved-variation-color {
+    background: #4DBAFD;
+}
+
+.pending-variation-color {
+    background: #1E1B39;
+}
+
+.completed-sum-color {
+    background: #AFA8F9;
+}
+
+.total-variation-color {
+    background: #D7BEAB; 
+}
+
+.contact-status-icon{
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+}
+
+.contact-status-lagend-text {
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 10px;
+    color: #000;
+}
+
+.file-input-container {
+    width: 19.4rem;
+  }
+  
+  .portfolio-view {
+    width: 20px;
+      height: 20px;
+      background-image: url('../../../../assets/icons/protfolio-view.svg');
+      background-size: cover;
+      background-position: center;
+      display: inline-block;
+      margin-right: 8px;
+  }
+  
+  .standard-view {
+    width: 20px;
+      height: 20px;
+      background-image: url('../../../../assets/icons/standard-view.svg');
+      background-size: cover;
+      background-position: center;
+      display: inline-block;
+      margin-right: 8px;
+  }
+  
+@media screen and (max-width: 960px) {
+    .chart-card {
+        flex: 0 0 49%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .flex-content {
+        flex: 0 0 100%;
+    }
+}
+
+.chart-card-2 {
+    min-width: 760px;
+    border-radius: 18px;
+    border: 1px solid #D4D4D4;
+}
+
+.valuation-status-chart {
+    width: 310px;
+    max-height: 300px;
+}
+
+.chart-card-3 {
+    min-width: 590px;
+    border-radius: 18px;
+    border: 1px solid #D4D4D4;
+}
+
+.valuation-status-div {
+    max-width: 500px;
+    max-height: 300px;
+}
+
+.mat-menu-panel {
+    background: white !important;
+}
+
+table {
+    width: 99rem !important;
+    overflow-x: auto;
+}
+
+.helper-text {
+    color: #828282;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 28px;
+}
+
+.main-heading-text {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 28px;
+}
+
+.chart-heading-text {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.chart-subheading-text {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+
+.colored-text {
+    color: #12AF9B !important;
+}
+
+.table-outer-div {
+    border: 1px solid #E1E1E1 !important;
+    border-radius: 10px !important;
+    overflow-x: auto !important;
+}
+
+.mat-cell,
+.mat-header-cell {
+    min-width: 5rem;
+    word-wrap: break-word;
+    text-align: center;
+}
+
+.mat-column-project_name {
+    min-width: 7rem;
+}
+
+.completed-sum {
+    height: 210px;
+    width: 210px;
+    background-color: #14D19E;
+    border-radius: 50%;
+    border: 4px solid #FFFFFF;
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 44px;
+}
+
+.gray-rounded-button {
+    border-radius: 18px;
+    background-color: #F8F8FF;
+    color: #615E83;
+    border: none;
+    height: 32px;
+    width: 55px;
+}
+
+.total-valuations {
+    height: 150px;
+    width: 150px;
+    background-color: #877DFB;
+    border-radius: 50%;
+    border: 4px solid #FFFFFF;
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 32px;
+    position: relative;
+    bottom: 225px;
+    left: 150px;
+}
+
+.pending-valuations {
+    height: 110px;
+    width: 110px;
+    background-color: #1E1B39;
+    border-radius: 50%;
+    border: 4px solid #FFFFFF;
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 26px;
+    position: relative;
+    bottom: 268px;
+    left: 150px;
+}

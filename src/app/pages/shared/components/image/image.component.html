@@ -1,0 +1,10 @@
+<div class="img-container" (click)="open()">
+  <img
+    [attr.src]="image ? image : 'assets/images/no-image.png'"
+    i18n-alt="Image Component: image@@image"
+    class="image"
+  />
+  <div class="overlay">
+    <a class="icon" title="Expand Image"> <i class="fa fa-search" style="color: black;"></i> </a>
+  </div>
+</div>

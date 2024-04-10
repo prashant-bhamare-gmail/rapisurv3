@@ -1,0 +1,172 @@
+<div class="modal-body">
+  <div class="row">
+    <div class="col-md-6"></div>
+    <div class="col-md-6">
+      <button class="close" style="margin-right: 20px" aria-label="Close" (click)="closeModal('close')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <p style="font-size: 12; font-weight: bold; text-align: center">
+        Project Info
+      </p>
+    </div>
+  </div>
+
+  
+
+  <section>
+    <div class="popup">
+      <div class="popup_container">
+        <div class="issue_name_desc">
+          <form [formGroup]="projectEditForm" ngNativeValidate>
+            <div class="row">
+              <div class="col-12">
+                <div class="form-group">
+                  <label for="inputEmail4" style="font-size: 12px; margin-bottom: -5px" class="form-label">
+                    Description:</label>
+                  <textarea class="form-control text-sm" rows="1" name="desr" placeholder="Project description"
+                    formControlName="desr">{{ selectedProject?.Description }}</textarea>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-4">
+                <div class="form-group">
+                  <label for="inputEmail4" style="font-size: 12px; margin-bottom: -5px" class="form-label">
+                    Project Currency:</label>
+                  <ng-select [items]="issueTypes" class="ng-select-container issue-select" appendTo="body"
+                    bindLabel="name" dropdownPosition="auto" bindValue="name" labelForId="id"
+                    placeholder="Select Currency" formControlName="project_currency">
+                  </ng-select>
+                </div>
+              </div>
+
+              <div class="col-4">
+                <div class="form-group">
+                  <label for="inputEmail4" style="font-size: 12px; margin-bottom: -5px" class="form-label">
+                    Other Currency:</label>
+                  <input type="text" name="other_currency" id="other_currency" class="form-control form-control-sm"
+                    formControlName="other_currency" style="text-transform: uppercase" placeholder="USD" required
+                    oninput="this.value = this.value.toUpperCase()" />
+                </div>
+              </div>
+
+              <div class="col-4">
+                <div class="form-group">
+                  <label for="inputEmail4" style="font-size: 12px; margin-bottom: -5px" class="form-label">
+                    Convert: {{ selectedProject?.calculation }}</label>
+
+                  <ng-select [items]="calculationUnit" bindLabel="name" dropdownPosition="auto" bindValue="value"
+                    labelForId="id" placeholder="Conversion" formControlName="calculation">
+                  </ng-select>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-4">
+                <div class="form-group">
+                  <label for="inputEmail4" style="font-size: 12px; margin-bottom: -5px" class="form-label">
+                    Ex. Rate</label>
+                  <input type="text" name="ex_rate" id="ex_rate" class="form-control form-control-sm"
+                    formControlName="ex_rate" required />
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="form-group">
+                  <label for="inputEmail4" style="font-size: 12px; margin-bottom: -5px" class="form-label">
+                    Status: {{ selectedProject.status }}</label>
+
+                  <ng-select [items]="statusData" bindLabel="name" dropdownPosition="auto" bindValue="name"
+                    labelForId="status" placeholder="Set new status" formControlName="status">
+                  </ng-select>
+                </div>
+              </div>
+
+              <div class="col-4 form-group">
+                <label for="inputEmail4" style="font-size: 12px; margin-bottom: -5px" class="form-label">
+                  Scope of work
+                </label>
+
+                <input type="text" name="scope_of_work" id="scope_of_work" class="form-control form-control-sm"
+                  formControlName="scope_of_work" placeholder="Scope of work" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="inputEmail4" style="font-size: 12px; margin-bottom: -5px" class="form-label">
+                Location:</label>
+              <textarea class="form-control" rows="1" name="location" placeholder="City, State, Zip Code"
+                formControlName="location">{{ selectedProject?.location }}</textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="inputEmail4" style="font-size: 12px; margin-bottom: -5px" class="form-label">Storage
+                Location</label>
+              <ng-select [items]="locationData" class="ng-select-container issue-select" appendTo="body"
+                bindLabel="name" dropdownPosition="auto" bindValue="id" labelForId="id"
+                placeholder="Select Storage Location" formControlName="storage_location">
+              </ng-select>
+            </div>
+
+            <div class="form-group">
+              <label for="inputEmail4" style="font-size: 12px;margin-bottom: -5px;" class="form-label">Select
+                sub-folders
+                to be created (DMS)</label>
+                <div class="rap-button" *ngIf="this.selection.length > 0" style="margin-bottom: 10px;margin-left: 10px;" (click)="createFolder()">
+                  <p>Create folder</p>
+                </div>
+
+              <div class="cards-container">
+                <div *ngFor="let c of folders; let i=index">
+                  <div class="cards" [class.active]="c.active" *ngIf="!c.saved"  (click)="selectFolder(c)">
+                    <p style="font-size: 12px;" *ngIf="c.name.length <= 30" [matTooltip]="c.name">
+                      {{ c.name }}
+                    </p>
+                    <p style="font-size: 12px;" *ngIf="c.name.length > 30" [matTooltip]="c.name">
+                      {{c.name | shortenText:50}}
+                    </p>
+                  </div>
+
+                  <div class="cards-saved" [class.cards-saved]="c.saved" *ngIf="c.saved">
+                    <p style="font-size: 12px;" *ngIf="c.name.length <= 30" [matTooltip]="c.name">
+                      {{ c.name }}
+                    </p>
+                    <p style="font-size: 12px;" *ngIf="c.name.length > 30" [matTooltip]="c.name">
+                      {{c.name | shortenText:50}}
+                    </p>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+
+            <div class="form-group">
+              <label for="inputEmail4" style="font-size: 12px; margin-bottom: -5px" class="form-label">
+                Document Location
+              </label>
+
+              <input type="text" name="project_folder" id="project_folder" class="form-control form-control-sm"
+                formControlName="project_folder" placeholder="Paste link here" />
+            </div>
+
+
+            <button class="btn btn-success btn-block btn-sm" outline status="primary" nbButton size="small"
+              (click)="submitBtn()">
+              <ng-container>
+                Update
+              </ng-container>
+            </button>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

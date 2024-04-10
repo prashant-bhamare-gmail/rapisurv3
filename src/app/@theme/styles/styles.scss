@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap');
+
+// themes - our custom or/and out of the box themes
+@import 'themes';
+@import '~handsontable/dist/handsontable.full.css';
+@import '~quill/dist/quill.bubble.css';
+// framework component themes (styles tied to theme variables)
+@import '~@nebular/theme/styles/globals';
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+@import '~bootstrap/scss/grid';
+
+// loading progress bar theme
+@import './pace.theme';
+
+@import './layout';
+@import './overrides';
+
+// install the framework and custom global styles
+@include nb-install() {
+  // framework global styles
+  @include nb-theme-global();
+
+  @include ngx-layout();
+  // loading progress bar
+  @include ngx-pace-theme();
+
+  @include nb-overrides();
+}
+
+html,
+body {
+  height: 100%;
+}
+.handsontable td {
+  //border-color: #fff
+  color: black;
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+}
+
+nb-user .user-name {
+  color: #000000;
+  font-family:
+    Open Sans,
+    sans-serif;
+  font-weight: 400;
+}
+
+nb-sidebar nb-menu {
+  margin: -2rem 1.25rem calc(1.25rem * -1) 0rem;
+}
+
+td.bg-read-only {
+  background-color: #f5f5f5;
+  color: black;
+  border-right: 1px solid #b8b8bb;
+  border-bottom: 1px solid #b8b8bb;
+}
+
+.highcharts-credits {
+  display: none !important;
+  }
+
+td.cost-read-only {
+  background-color: #c9c9cc;
+  border-right: 1px solid #c9c9cc;
+  border-bottom: 1px solid #c9c9cc;
+}
+
+.handsontable table thead th {
+  white-space: pre-line;
+  //max-width: __<<ngThemingMigrationEscapedComment0>>__
+}
+
+.handsontable table td:nth-child(even) {
+  border-right: 1px solid #030303;
+}
+
+.handsontable table td:nth-child(odd) {
+  border-right: 1px solid #000000;
+}
+
+.handsontable table td.custom-cell {
+  //color: #fff;
+  background-color: #e9e7e7;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+/* CSS */
+::-webkit-input-placeholder {
+  font-size: 12px;
+}
+
+::-moz-placeholder {
+  font-size: 12px;
+}
+
+:-ms-input-placeholder {
+  font-size: 12px;
+}
+
+.placeholder {
+  font-size: 12px;
+}
+
+input.form-control {
+  // font-size: 12px;
+}
+
+.form-control-sm {
+  height: calc(1em + 0.5rem + 2px);
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  border-radius: 0.2rem;
+}
+
+ng-select .ng-select-container {
+  min-height: calc(1em + 0.5rem + 2px) !important;
+  // border-radius: 10px;
+  //   border: 1px solid #d7d7d7;
+}
+
+ng-select.ng-select-single .ng-select-container {
+  height: calc(1em + 0.5rem + 2px) !important;
+  // border-radius: 10px;
+  //   border: 1px solid #d7d7d7;
+}
+
+.ng-select .ng-select-container .ng-value-container .ng-placeholder {
+  font-size: 12px;
+}
+
+.ng-dropdown-panel .scroll-host {
+  font-size: 12px;
+}
+
+.ng-select.ng-select-single .ng-select-container .ng-value-container,
+.ng-select.ng-select-single .ng-select-container .ng-value-container .ng-value {
+  font-size: 12px;
+}
+
+.datatable-row-even,
+.datatable-row-odd {
+  background-color: transparent;
+}
+
+.link {
+  color: #18b49c;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.link:hover {
+  color: #125d4e;
+  text-decoration: underline;
+}

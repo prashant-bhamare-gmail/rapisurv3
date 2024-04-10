@@ -1,0 +1,260 @@
+// @nebular theming framework
+@import '@nebular/theme/styles/theming';
+// @nebular out of the box themes
+@import '@nebular/theme/styles/themes';
+
+$nb-themes: nb-register-theme(
+  (
+    layout-padding-top: 2.25rem,
+    menu-item-icon-margin: 0 2rem 0 0,
+
+    card-height-tiny: 13.5rem,
+    card-height-small: 21.1875rem,
+    card-height-medium: 28.875rem,
+    card-height-large: 36.5625rem,
+    card-height-giant: 44.25rem,
+    card-margin-bottom: 1.875rem,
+    card-header-with-select-padding-top: 0.5rem,
+    card-header-with-select-padding-bottom: 0.5rem,
+
+    //customised
+    //   card-background-color: #f0f0f0,
+    footer-text-color: #000000,
+    header-height: 3.5rem,
+    route-tabset-background-color: #f7f9fc,
+    route-tabset-tab-background-color: #f7f9fc,
+    menu-item-hover-text-color: #000000,
+    menu-item-hover-background-color: #f85c041a,
+    menu-item-border-radius: 0.5rem,
+    layout-background-color: #ffffff,
+    menu-item-active-background-color: #f85c041a,
+    menu-item-active-text-color: #000000,
+    menu-item-icon-active-color: #000000,
+    sidebar-menu-item-highlight-color: #f85c04,
+    menu-text-line-height: 2rem,
+    menu-item-divider-style: none,
+
+    text-subtitle-2-font-size: 1rem,
+    menu-item-padding: 0.55rem 1rem,
+    menu-text-font-weight: 50,
+    radio-height: 0.9rem,
+    radio-width: 0.9rem,
+    route-tabset-border-radius: 2rem,
+    tabset-border-radius: 2rem,
+
+    toggle-height: 1.2rem,
+    toggle-switcher-size: 1.1rem,
+    toggle-width: 2.125rem,
+
+    // tabset-tab-padding: 0.8rem,
+    // route-tabset-tab-padding: 0.8rem,
+    route-tabset-tab-active-underline-color: #18b49c,
+
+    route-tabset-tab-hover-text-color: #c4eddf,
+    route-tabset-tab-hover-underline-color: #c4eddf,
+
+    tabset-tab-active-text-color: #18b49c,
+    tabset-tab-active-underline-color: #18b49c,
+
+    tabset-tab-hover-text-color: #c4eddf,
+    tabset-tab-hover-underline-color: #c4eddf,
+
+    radio-primary-checked-border-color: #18b49c,
+    radio-primary-inner-circle-color: #18b49c,
+    radio-primary-focus-border-color: #18b49c,
+
+    option-small-text-font-size: 12px,
+    option-small-text-font-weight: 100,
+
+    select-small-placeholder-text-font-size: 12px,
+    select-small-placeholder-text-font-weight: 100,
+
+    select-outline-small-padding: 0rem 0rem 0rem 0.5rem,
+    select-small-text-font-size: 12px,
+    select-small-text-font-weight: 100,
+    select-outline-basic-background-color: white,
+    //   select-small-text-line-height: 0rem,
+    // line-height: var(--option-small-text-line-height);
+    // padding: var(--option-small-padding);
+    radio-primary-focus-inner-circle-color: #18b49c,
+    //radio-primary-checked-background-color: #18b49c,
+    radio-primary-hover-background-color: #c4eddf,
+
+    radio-primary-hover-border-color: #18b49c,
+    //radio-primary-hover-inner-circle-color: #18b49c,
+    radio-primary-active-border-color: #18b49c,
+    //radio-primary-hover-checked-background-color: #18b49c,
+    radio-primary-border-color: #18b49c,
+    radio-primary-active-inner-circle-color: #18b49c,
+    radio-outline-width: 0.05rem,
+    radio-outline-color: #18b49c,
+
+    radio-basic-checked-border-color: #18b49c,
+    radio-basic-inner-circle-color: #18b49c,
+    radio-basic-focus-border-color: #c4eddf,
+
+    radio-basic-hover-border-color: #c4eddf,
+    radio-basic-hover-inner-circle-color: #18b49c,
+
+    checkbox-primary-checked-border-color: #18b49c,
+    checkbox-primary-inner-circle-color: #18b49c,
+    checkbox-primary-focus-border-color: #18b49c,
+
+    checkbox-text-font-weight: 100,
+
+    radio-text-font-size: 12px,
+    radio-text-font-weight: 100,
+    checkbox-text-font-size: 12px,
+
+    checkbox-height: 0.9rem,
+    checkbox-width: 0.9rem,
+
+    checkbox-primary-hover-checked-background-color: #18b49c,
+
+    checkbox-primary-focus-checked-background-color: #18b49c,
+    checkbox-primary-focus-checked-border-color: #18b49c,
+
+    checkbox-primary-focus-inner-circle-color: #18b49c,
+    checkbox-primary-checked-background-color: #18b49c,
+    checkbox-primary-hover-background-color: #c4eddf,
+
+    checkbox-primary-hover-border-color: #18b49c,
+    //checkbox-primary-hover-inner-circle-color: #18b49c,
+    checkbox-primary-active-border-color: #18b49c,
+    //checkbox-primary-hover-checked-background-color: #18b49c,
+    checkbox-primary-border-color: #18b49c,
+    checkbox-primary-active-inner-circle-color: #18b49c,
+    checkbox-outline-width: 0.05rem,
+    checkbox-outline-color: #18b49c,
+
+    checkbox-basic-checked-border-color: #18b49c,
+    checkbox-basic-inner-circle-color: #18b49c,
+    checkbox-basic-focus-border-color: #c4eddf,
+
+    checkbox-basic-hover-border-color: #c4eddf,
+    checkbox-basic-hover-inner-circle-color: #18b49c,
+
+    button-filled-primary-background-color: #18b49c,
+    button-filled-primary-border-color: #18b49c,
+    button-filled-primary-focus-background-color: #18b49c,
+    button-filled-primary-focus-border-color: #18b49c,
+    button-filled-primary-hover-background-color: #c4eddf,
+    button-filled-primary-hover-border-color: #b6ecda,
+    button-filled-primary-active-background-color: #18b49c,
+    button-filled-primary-active-border-color: #18b49c,
+
+    button-outline-color: #18b49c,
+    button-outline-width: 0.1rem,
+    button-outline-primary-border-color: #18b49c,
+    button-outline-primary-background-color: #ffffff,
+    //button-outline-primary-border-color:
+    button-outline-primary-text-color: #18b49c,
+    button-outline-primary-hover-background-color: #18b49c,
+    button-outline-primary-hover-border-color: #18b49c,
+    button-outline-primary-hover-text-color: white,
+
+    button-round-border-radius: 0.4rem,
+    button-filled-border-width: 0rem,
+    button-semi-round-border-radius: 0.4rem,
+    button-rectangle-border-radius: 0.4rem,
+    button-filled-text-transform: 'none',
+    button-outline-text-transform: 'none',
+    button-ghost-text-transform: 'none',
+    button-hero-text-transform: 'none',
+
+    footer-background-color: #ffffff,
+    //customised
+    select-min-width: 6rem,
+    slide-out-background: #f7f9fc,
+    slide-out-shadow-color: 0 4px 14px 0 #8f9bb3,
+    slide-out-shadow-color-rtl: 0 4px 14px 0 #8f9bb3,
+  ),
+  default,
+  default
+);
+
+$nb-themes: nb-register-theme(
+  (
+    layout-padding-top: 2.25rem,
+
+    menu-item-icon-margin: 0 2rem 0 0,
+
+    card-height-tiny: 13.5rem,
+    card-height-small: 21.1875rem,
+    card-height-medium: 28.875rem,
+    card-height-large: 36.5625rem,
+    card-height-giant: 44.25rem,
+    card-margin-bottom: 1.875rem,
+    card-header-with-select-padding-top: 0.5rem,
+    card-header-with-select-padding-bottom: 0.5rem,
+
+    //customised
+    header-height: 3.5rem,
+    //customised
+    select-min-width: 6rem,
+
+    slide-out-background: #252547,
+    slide-out-shadow-color: 2px 0 3px #29157a,
+    slide-out-shadow-color-rtl: -2px 0 3px #29157a,
+  ),
+  cosmic,
+  cosmic
+);
+
+$nb-themes: nb-register-theme(
+  (
+    layout-padding-top: 2.25rem,
+
+    menu-item-icon-margin: 0 2rem 0 0,
+
+    card-height-tiny: 13.5rem,
+    card-height-small: 21.1875rem,
+    card-height-medium: 28.875rem,
+    card-height-large: 36.5625rem,
+    card-height-giant: 44.25rem,
+    card-margin-bottom: 1.875rem,
+    card-header-with-select-padding-top: 0.5rem,
+    card-header-with-select-padding-bottom: 0.5rem,
+
+    //customised
+    header-height: 3.5rem,
+    route-tabset-background-color: rgba(255, 255, 255, 0),
+    route-tabset-tab-background-color: rgba(255, 255, 255, 0),
+    //customised
+    select-min-width: 6rem,
+
+    slide-out-background: linear-gradient(270deg, #edf1f7 0%, #e4e9f2 100%),
+    slide-out-shadow-color: 0 4px 14px 0 #8f9bb3,
+    slide-out-shadow-color-rtl: 0 4px 14px 0 #8f9bb3,
+  ),
+  corporate,
+  corporate
+);
+
+$nb-themes: nb-register-theme(
+  (
+    layout-padding-top: 2.25rem,
+
+    menu-item-icon-margin: 0 2rem 0 0,
+
+    card-height-tiny: 13.5rem,
+    card-height-small: 21.1875rem,
+    card-height-medium: 28.875rem,
+    card-height-large: 36.5625rem,
+    card-height-giant: 44.25rem,
+    card-margin-bottom: 1.875rem,
+    card-header-with-select-padding-top: 0.5rem,
+    card-header-with-select-padding-bottom: 0.5rem,
+
+    //customised
+    header-height: 3.5rem,
+    //customised
+    select-min-width: 6rem,
+
+    slide-out-background: linear-gradient(270deg, #222b45 0%, #151a30 100%),
+    slide-out-shadow-color: 0 4px 14px 0 #8f9bb3,
+    slide-out-shadow-color-rtl: 0 4px 14px 0 #8f9bb3,
+  ),
+  dark,
+  dark
+);

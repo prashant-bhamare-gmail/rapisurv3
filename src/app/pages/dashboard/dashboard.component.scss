@@ -1,0 +1,116 @@
+.app_cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.cards {
+  // width: 140px;
+  height: 130px;
+  background: #fef3ed;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  // align-items: center;
+  // padding: 20px 25px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 5px;
+  padding-right: 2px;
+  transition: 0.3s;
+}
+
+.text-emphasized {
+  // background-color: #f85c04;
+  // border-color: #f85c04;
+  color: #f85c04;
+  //display: block;
+  cursor: pointer;
+  margin: 4px 7px;
+  font-weight: 400;
+  // padding: 0rem 0.5rem;
+  font-size: 0.875rem;
+  // line-height: 1.5;
+}
+
+.project_id {
+  display: inline-block;
+  border-bottom: solid 2px #2596be;
+  color: #2596be;
+  cursor: pointer;
+}
+
+.cards:hover {
+  border: 2px solid #f85c04;
+}
+
+.cards img {
+  height: 60px;
+  width: 50px;
+}
+
+// .cards .bill-img {
+//   width: 50px;
+// }
+
+.app_name {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.app_name p {
+  color: #000;
+  font-size: 15px;
+  // max-width: 90px;
+}
+
+.app_name ion-icon {
+  color: #000;
+  font-size: 16px;
+  //  margin-top: -16px;
+}
+
+.small-p {
+  /// margin-top: 24px;
+}
+
+.section_header {
+  color: #000000 !important;
+  margin-bottom: 20px;
+  font-size: 16px;
+  // font-weight: 600;
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  cursor: pointer;
+  //transition: 0.3s;
+  transition: transform 0.3s ease;
+}
+
+.list-item:hover {
+  transform: scale(1.1);
+  // border: 0px solid #ffffff;
+  //  font-size: 15px;
+  /// transition: 0.5s;
+  ///
+  ///background-color: hsl(204, 56%, 82%);
+}
+
+.left-icon,
+.right-icon {
+  margin: 0 10px;
+}
+
+.text {
+  //flex-grow: 1;
+  font-size: 12px;
+}
+
+.highcharts-credits {
+  display: none !important;
+  }

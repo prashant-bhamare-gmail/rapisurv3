@@ -1,0 +1,17 @@
+.datatable-body-cell {
+    overflow-y: visible !important;
+    overflow-x: visible !important;
+  }
+  
+   .ngx-datatable {
+    overflow-x: visible !important;
+    overflow-y: visible !important;
+  } 
+
+  .row-credit{
+    color: red
+  }
+
+  .row-debit{
+    color: black
+  }

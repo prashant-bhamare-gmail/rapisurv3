@@ -1,0 +1,288 @@
+/* You can add global styles to this file, and also import other style files */
+@import '@angular/material/theming';
+
+//@include mat-core();
+
+// $light-green-palette: (
+//     50: #E3F5EC,
+//     100: #BAE5D1,
+//     200: #8DD5B3,
+//     300: #58C596,
+//     400: #10B981,
+//     500: #00AC6B,
+//     600: #009D60,
+//     700: #008D53,
+//     800: #007A46,
+//     900: #005B30,
+//     contrast: (50: rgba(black, 0.87),
+//         100: rgba(black, 0.87),
+//         200: rgba(black, 0.87),
+//         300: rgba(black, 0.87),
+//         400: rgba(black, 0.87),
+//         500: white,
+//         600: white,
+//         700: white,
+//         800: white,
+//         900: white,
+//     )
+// );
+
+// $my-app-primary: mat-define-palette($light-green-palette, 400);
+// $my-app-accent: mat-palette($mat-pink, A200, A100, A400);
+// $my-app-theme: mat-define-light-theme($my-app-primary, $my-app-accent);
+// @include angular-material-theme($my-app-theme);
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+.table-data-text {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14.52px;
+  color: #292929;
+}
+
+.mat-tab-label,
+.mat-tab-label-active {
+  height: 35px !important;
+  opacity: 1 !important;
+  transition: none !important;
+}
+
+.mat-tab-label-active {
+  background-color: #ff7f3a;
+  color: white;
+  border-radius: 5px 5px 0 0;
+}
+
+.mat-tab-label:not(.mat-tab-label-active) {
+  background: #eee;
+  color: #18b49c;
+  border-radius: 5px 5px 0 0;
+}
+
+.mat-tab-label {
+  margin-right: 5px;
+}
+
+.mat-tab-group.mat-primary .mat-ink-bar {
+  background-color: transparent;
+}
+
+.bg-gray {
+  background-color: #e1e1e1;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-wrapper {
+  height: 40px !important;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-flex {
+  height: 40px !important;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-infix {
+  height: 40px !important;
+  border-top: 0 !important;
+}
+
+.mat-form-field-appearance-outline .mat-select-arrow-wrapper {
+  transform: none !important;
+}
+
+.mat-form-field {
+  height: 40px !important;
+}
+
+.mat-form-field-wrapper {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+  // border: 1px solid #CDCDCD;
+  border-radius: 10px;
+}
+
+.column-space-between {
+  display: flex !important;
+  justify-content: space-between !important;
+  flex-direction: column !important;
+}
+
+.primary-button {
+  border: 1px solid #18b49c;
+  border-radius: 4px;
+  color: #18b49c;
+  font-size: 14px;
+  font-weight: 600;
+  height: 40px;
+  cursor: pointer;
+  min-width: 100px;
+}
+
+.mat-select-arrow-wrapper {
+  background-image: url('../../../assets/icons/down-arrow-icon.svg');
+}
+
+.mat-select-arrow {
+  opacity: 0;
+  border-left: none !important;
+}
+
+.row-space-between {
+  display: flex !important;
+  justify-content: space-between !important;
+  flex-direction: row !important;
+}
+
+.row-space-around {
+  display: flex !important;
+  justify-content: space-around !important;
+  flex-direction: row !important;
+}
+
+.column-center {
+  display: flex !important;
+  justify-content: center !important;
+  flex-direction: column !important;
+}
+
+.row-center {
+  display: flex !important;
+  justify-content: center !important;
+  flex-direction: row !important;
+}
+
+.column-start {
+  display: flex !important;
+  justify-content: flex-start !important;
+  flex-direction: column !important;
+}
+
+.row-start {
+  display: flex !important;
+  justify-content: flex-start !important;
+  flex-direction: row !important;
+}
+
+.column-end {
+  display: flex !important;
+  justify-content: flex-end !important;
+  flex-direction: column !important;
+}
+
+.row-end {
+  display: flex !important;
+  justify-content: flex-end !important;
+  flex-direction: row !important;
+}
+
+.row-wrap {
+  flex-flow: row wrap !important;
+}
+
+.column-wrap {
+  flex-flow: column wrap !important;
+}
+
+.center {
+  align-items: center !important;
+}
+
+.start {
+  align-items: flex-start !important;
+}
+
+.end {
+  align-items: flex-end !important;
+}
+
+.stretch {
+  align-items: stretch !important;
+}
+
+.baseline {
+  align-items: baseline !important;
+}
+
+.row {
+  display: flex !important;
+  flex-direction: row !important;
+}
+
+.column {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.table-outer-div-colored {
+  .mat-cell,
+  tr,
+  .colored-text {
+    color: #12af9b !important;
+  }
+}
+
+.accordion-main {
+  .mat-expansion-indicator::after {
+    display: none !important;
+  }
+
+  .mat-expansion-panel-header {
+    padding: 0 !important;
+  }
+
+  .mat-elevation-z {
+    box-shadow: none !important;
+  }
+
+  .mat-expansion-panel-spacing {
+    margin: 0 !important;
+  }
+
+  .mat-expansion-panel-body {
+    padding: 0 !important;
+  }
+
+  .mat-expansion-panel-spacing {
+    margin: 0 !important;
+  }
+
+  .mat-elevation-z {
+    box-shadow: none !important;
+  }
+}
+
+.mandatory-field-asterisk {
+  color: red;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+ // line-height: 24px;
+}
+
+.mat-error {
+  font-size: 12px !important;
+}
+
+
+.blue-text {
+  cursor: pointer;
+  font-weight: 400;
+  font-size: 14px;
+  color: #2b89df !important;
+}
+
+.main-table-div {
+  overflow: auto;
+}
